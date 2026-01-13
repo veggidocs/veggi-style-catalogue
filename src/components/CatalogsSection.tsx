@@ -7,77 +7,57 @@ const catalogs = [
   {
     id: 1,
     name: "Sleepwear",
-    description: "Elegância adulta. Ticket médio premium.",
     image: catalogSleepwear,
   },
   {
     id: 2,
     name: "Sonho e Fantasia",
-    description: "Infantil com apelo emocional e encanto.",
     image: catalogSonhoFantasia,
   },
   {
     id: 3,
     name: "Turma da Bia",
-    description: "Giro garantido. Reposição constante.",
     image: catalogTurmaBia,
   },
   {
     id: 4,
     name: "Licenciados",
-    description: "Warner Bros. Venda por impulso.",
     image: catalogLicenciados,
   },
 ];
 
 const CatalogsSection = () => {
   return (
-    <section className="section-padding bg-background">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="text-center mb-12 md:mb-16">
-          <p className="caption text-veggi-stone mb-4">Coleções</p>
-          <h2 className="headline-section text-foreground">
-            Nossos Catálogos
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {catalogs.map((catalog, index) => (
+    <section className="py-4 md:py-8 bg-background">
+      <div className="px-4 md:px-8">
+        {/* Large Editorial Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+          {catalogs.map((catalog) => (
             <div
               key={catalog.id}
-              className="catalog-card group"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group relative aspect-[3/4] overflow-hidden cursor-pointer"
             >
               <img
                 src={catalog.image}
                 alt={catalog.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
-              <div className="catalog-card-overlay" />
               
-              <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6">
-                <h3 className="headline-card text-primary-foreground mb-2">
+              {/* Minimal Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Title - Always Visible */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-serif text-primary-foreground">
                   {catalog.name}
                 </h3>
-                <p className="body-small text-primary-foreground/80 mb-4 hidden sm:block">
-                  {catalog.description}
-                </p>
-                <button className="inline-flex items-center text-primary-foreground text-sm font-medium tracking-wide uppercase group-hover:translate-x-2 transition-transform duration-300">
-                  Ver catálogo
-                  <svg
-                    className="w-4 h-4 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </button>
+              </div>
+
+              {/* Hover CTA */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <span className="px-6 py-3 bg-primary-foreground text-foreground text-sm font-medium tracking-wide uppercase">
+                  Ver coleção
+                </span>
               </div>
             </div>
           ))}

@@ -1,46 +1,34 @@
 const ROISection = () => {
   return (
-    <section className="section-padding bg-background">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section className="py-24 md:py-32 bg-secondary">
+      <div className="container mx-auto px-6 lg:px-16">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="caption text-veggi-stone mb-4">Retorno sobre Investimento</p>
-          <h2 className="headline-section text-foreground mb-8">
-            Margem saudável, giro garantido
+          <p className="text-xs uppercase tracking-[0.3em] text-veggi-stone mb-6">
+            Seu negócio
+          </p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground leading-tight mb-16">
+            Margem saudável,
+            <br />
+            giro garantido
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="p-8 bg-secondary">
-              <div className="stat-number text-accent mb-2">2.5x</div>
-              <p className="font-medium text-foreground mb-1">Markup médio</p>
-              <p className="body-small text-muted-foreground">
-                Margem que sustenta seu negócio
-              </p>
+          <div className="grid grid-cols-3 gap-8 md:gap-16 mb-16">
+            <div>
+              <span className="block text-5xl md:text-6xl font-serif text-accent">2.5x</span>
+              <span className="text-sm text-muted-foreground">markup médio</span>
             </div>
-            
-            <div className="p-8 bg-secondary">
-              <div className="stat-number text-accent mb-2">30</div>
-              <p className="font-medium text-foreground mb-1">Dias</p>
-              <p className="body-small text-muted-foreground">
-                Giro médio de estoque
-              </p>
+            <div>
+              <span className="block text-5xl md:text-6xl font-serif text-accent">30</span>
+              <span className="text-sm text-muted-foreground">dias de giro</span>
             </div>
-            
-            <div className="p-8 bg-secondary">
-              <div className="stat-number text-accent mb-2">85%</div>
-              <p className="font-medium text-foreground mb-1">Recompra</p>
-              <p className="body-small text-muted-foreground">
-                Taxa de reposição dos clientes
-              </p>
+            <div>
+              <span className="block text-5xl md:text-6xl font-serif text-accent">85%</span>
+              <span className="text-sm text-muted-foreground">recompra</span>
             </div>
           </div>
 
-          <p className="body-large text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Nossa consultoria de mix ajuda você a montar o estoque ideal para
-            seu perfil de cliente e capacidade de investimento.
-          </p>
-
           <a href="#contato" className="btn-primary">
-            Calcular meu potencial de lucro
+            Calcular meu potencial
           </a>
         </div>
       </div>
