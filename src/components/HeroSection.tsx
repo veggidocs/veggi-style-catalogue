@@ -2,55 +2,48 @@ import heroImage from "@/assets/hero-sleepwear.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center">
-      {/* Background Image */}
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Full Screen Background Image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Veggi Sleepwear - Elegância e conforto"
-          className="w-full h-full object-cover"
+          alt="Veggi Sleepwear"
+          className="w-full h-full object-cover scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/30 to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12">
-        <div className="max-w-2xl animate-fade-up">
-          <p className="caption text-veggi-sand mb-6">
-            Há 45 anos no mercado
-          </p>
-          
-          <h1 className="headline-hero text-primary-foreground mb-6">
-            Gestão inteligente de sleepwear para lojistas multimarcas
-          </h1>
-          
-          <p className="body-large text-veggi-sand/90 mb-10">
-            +1.000 PDVs ativos · Licenciada Warner Bros · Especialistas em mix, giro e ticket médio
-          </p>
+      {/* Minimal Content - Fashion Campaign Style */}
+      <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-32">
+        <div className="container mx-auto px-6 lg:px-16">
+          <div className="max-w-xl animate-fade-up">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-primary-foreground leading-[0.9] tracking-tight mb-8">
+              Sleepwear
+              <br />
+              <span className="text-accent">B2B</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-primary-foreground/70 font-light mb-10 max-w-md">
+              45 anos · +1.000 PDVs · Licenciada Warner Bros
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="#contato"
-              className="btn-accent"
-            >
-              Quero revender em minha loja
-            </a>
-            <a
-              href="#cliente"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary-foreground/30 text-primary-foreground font-medium tracking-wide uppercase text-sm transition-all duration-300 hover:bg-primary-foreground/10 hover:border-primary-foreground/50"
-            >
-              Já sou cliente e quero comprar
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href="#contato" className="btn-accent">
+                Quero revender
+              </a>
+              <a
+                href="#cliente"
+                className="inline-flex items-center justify-center px-8 py-4 border border-primary-foreground/30 text-primary-foreground text-sm font-medium tracking-wide uppercase transition-all duration-300 hover:bg-primary-foreground/10"
+              >
+                Já sou cliente
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-foreground/40 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-primary-foreground/60 rounded-full" />
-        </div>
-      </div>
+      {/* Scroll Line */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-20 w-px bg-gradient-to-b from-transparent to-primary-foreground/40" />
     </section>
   );
 };

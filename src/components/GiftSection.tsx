@@ -1,67 +1,36 @@
-import giftPackaging from "@/assets/gift-packaging.jpg";
-
-const benefits = [
-  {
-    title: "Alto poder de presente",
-    description: "Embalagens premium que agregam valor percebido",
-  },
-  {
-    title: "Aumento de ticket médio",
-    description: "Kits e combos prontos para presentear",
-  },
-  {
-    title: "Diferencial no PDV",
-    description: "Destaque visual que atrai e converte",
-  },
-];
+import flatlayCollection from "@/assets/flatlay-collection.jpg";
 
 const GiftSection = () => {
   return (
-    <section className="section-padding bg-veggi-blush">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
-          <div className="relative">
-            <div className="aspect-[16/10] overflow-hidden shadow-dramatic">
-              <img
-                src={giftPackaging}
-                alt="Embalagens de presente Veggi"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {/* Decorative element */}
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/20 -z-10" />
-          </div>
+    <section className="relative min-h-screen">
+      {/* Full Width Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={flatlayCollection}
+          alt="Coleção presenteável"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-transparent" />
+      </div>
 
-          <div>
-            <p className="caption text-accent mb-4">Presenteabilidade</p>
-            <h2 className="headline-section text-foreground mb-6">
-              Embalagens que vendem mais
-            </h2>
-            <p className="body-large text-muted-foreground mb-10">
-              Nossas embalagens premium transformam cada peça em uma experiência
-              de presente. Valor percebido que eleva o ticket médio e
-              diferencia sua loja no mercado.
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex items-center">
+        <div className="container mx-auto px-6 lg:px-16">
+          <div className="max-w-lg">
+            <p className="text-xs uppercase tracking-[0.3em] text-veggi-sand mb-6">
+              Presenteabilidade
             </p>
-
-            <div className="space-y-6">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-accent/20 flex items-center justify-center">
-                    <span className="text-accent font-serif text-xl">
-                      {index + 1}
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-foreground mb-1">
-                      {benefit.title}
-                    </h4>
-                    <p className="body-small text-muted-foreground">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-primary-foreground leading-tight mb-8">
+              Cada peça,
+              <br />
+              uma experiência
+            </h2>
+            <p className="text-lg text-primary-foreground/70 font-light mb-10">
+              Embalagens premium que elevam o ticket médio
+            </p>
+            <a href="#contato" className="btn-accent">
+              Saiba mais
+            </a>
           </div>
         </div>
       </div>
