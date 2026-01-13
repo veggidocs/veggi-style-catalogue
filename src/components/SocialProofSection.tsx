@@ -6,25 +6,25 @@ const stats = [
 
 const SocialProofSection = () => {
   return (
-    <section className="py-24 md:py-32 bg-primary">
+    <section className="py-24 md:py-32 bg-neutral-900">
       <div className="container mx-auto px-6 lg:px-16">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <span className="block text-6xl md:text-7xl lg:text-8xl font-serif text-primary-foreground">
+              <span className="block text-6xl md:text-7xl lg:text-8xl font-serif text-white">
                 {stat.number}
               </span>
-              <span className="text-sm uppercase tracking-[0.3em] text-primary-foreground/60">
+              <span className="text-sm uppercase tracking-[0.3em] text-white/50">
                 {stat.label}
               </span>
             </div>
           ))}
           
           <div className="text-center md:text-right">
-            <span className="block text-2xl md:text-3xl font-serif text-accent mb-2">
+            <span className="block text-2xl md:text-3xl font-serif text-white/80 mb-2">
               Warner Bros
             </span>
-            <span className="text-sm uppercase tracking-[0.3em] text-primary-foreground/60">
+            <span className="text-sm uppercase tracking-[0.3em] text-white/50">
               Licenciada oficial
             </span>
           </div>
