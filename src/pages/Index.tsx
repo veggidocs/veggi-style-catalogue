@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import CatalogsSection from "@/components/CatalogsSection";
 import EditorialSection from "@/components/EditorialSection";
 import SocialProofSection from "@/components/SocialProofSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import GiftSection from "@/components/GiftSection";
 import ROISection from "@/components/ROISection";
 import CTASection from "@/components/CTASection";
@@ -23,6 +24,7 @@ const Index = () => {
         <section id="sobre">
           <SocialProofSection />
         </section>
+        <TestimonialsSection />
         <GiftSection />
         <ROISection />
         <CTASection />
