@@ -28,7 +28,7 @@ const catalogs = [
 
 const CatalogsSection = () => {
   return (
-    <section className="py-4 md:py-8 bg-background">
+    <section className="py-4 md:py-8 bg-white">
       <div className="px-4 md:px-8">
         {/* Large Editorial Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
@@ -48,14 +48,14 @@ const CatalogsSection = () => {
               
               {/* Title - Always Visible */}
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-serif text-primary-foreground">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-serif text-white">
                   {catalog.name}
                 </h3>
               </div>
 
               {/* Hover CTA */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="px-6 py-3 bg-primary-foreground text-foreground text-sm font-medium tracking-wide uppercase">
+                <span className="px-6 py-3 bg-white text-neutral-900 text-sm font-medium tracking-wide uppercase">
                   Ver coleção
                 </span>
               </div>
