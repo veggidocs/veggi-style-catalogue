@@ -65,10 +65,10 @@ const TestimonialsSection = () => {
       <div className="container mx-auto px-6 lg:px-16">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-24">
-          <p className="text-xs uppercase tracking-[0.3em] text-neutral-500 mb-4">
+          <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-4">
             Quem revende
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-neutral-900">
+          <h2 className="font-heading text-[40px] font-bold text-foreground leading-tight">
             Histórias reais
           </h2>
         </div>
@@ -108,7 +108,7 @@ const TestimonialsSection = () => {
 
                   {/* Quote Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <p className="text-lg md:text-xl font-serif text-white italic">
+                    <p className="text-lg md:text-xl font-heading font-bold text-white italic">
                       "{testimonial.quote}"
                     </p>
                   </div>
@@ -116,8 +116,8 @@ const TestimonialsSection = () => {
 
                 {/* Info */}
                 <div>
-                  <h4 className="font-medium text-neutral-900">{testimonial.name}</h4>
-                  <p className="text-sm text-neutral-500">
+                  <h4 className="font-label text-base font-semibold text-foreground normal-case tracking-normal">{testimonial.name}</h4>
+                  <p className="text-sm font-sans text-muted-foreground">
                     {testimonial.store} · {testimonial.location}
                   </p>
                 </div>
@@ -128,7 +128,7 @@ const TestimonialsSection = () => {
 
         {/* Text Testimonials */}
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-neutral-500 mb-12 text-center">
+          <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-12 text-center">
             O que dizem
           </p>
           
@@ -139,23 +139,23 @@ const TestimonialsSection = () => {
                 className="relative p-8 md:p-10 bg-neutral-50 group hover:bg-neutral-100 transition-colors duration-500"
               >
                 {/* Quote Mark */}
-                <div className="absolute top-6 left-8 text-6xl font-serif text-neutral-300 leading-none">
+                <div className="absolute top-6 left-8 text-6xl font-serif text-border leading-none">
                   "
                 </div>
 
                 {/* Quote */}
                 <blockquote className="relative z-10 pt-8">
-                  <p className="text-lg md:text-xl font-serif text-neutral-800 leading-relaxed mb-8">
+                  <p className="text-base font-sans text-foreground leading-relaxed mb-8 italic">
                     {testimonial.quote}
                   </p>
 
                   {/* Author */}
                   <footer className="border-t border-neutral-200 pt-6">
-                    <p className="font-medium text-neutral-900">{testimonial.name}</p>
-                    <p className="text-sm text-neutral-500 mb-2">
+                    <p className="font-label text-base font-semibold text-foreground normal-case tracking-normal">{testimonial.name}</p>
+                    <p className="text-sm font-sans text-muted-foreground mb-2">
                       {testimonial.store} · {testimonial.location}
                     </p>
-                    <p className="text-xs uppercase tracking-wider text-neutral-400">
+                    <p className="font-label text-[12px] tracking-[0.1em] uppercase text-accent">
                       {testimonial.years}
                     </p>
                   </footer>
