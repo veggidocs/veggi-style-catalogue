@@ -6,7 +6,6 @@ import PackagingSection from "@/components/PackagingSection";
 import MixSection from "@/components/MixSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import GiftSection from "@/components/GiftSection";
 import ROISection from "@/components/ROISection";
 import SellOutSupportSection from "@/components/SellOutSupportSection";
 import CTASection from "@/components/CTASection";
@@ -26,7 +25,6 @@ const Index = () => {
         </section>
         <PackagingSection />
         <MixSection />
-        <GiftSection />
         <section id="roi">
           <ROISection />
         </section>
