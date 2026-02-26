@@ -62,6 +62,12 @@ const CTASection = () => {
                 </li>
               ))}
             </ul>
+            <a
+              href="#"
+              className="block w-full mt-6 text-center bg-white text-primary font-label font-semibold text-sm py-3 px-7 rounded hover:bg-[#F5F3F0] transition-colors duration-300 normal-case tracking-normal"
+            >
+              QUERO REVENDER
+            </a>
           </div>
 
           {/* Card — Já sou cliente */}
@@ -81,6 +87,12 @@ const CTASection = () => {
                 </li>
               ))}
             </ul>
+            <a
+              href="#"
+              className="block w-full mt-6 text-center border border-white text-white bg-transparent font-label font-semibold text-sm py-3 px-7 rounded hover:bg-white/10 transition-colors duration-300 normal-case tracking-normal"
+            >
+              ACESSAR PORTAL
+            </a>
           </div>
         </div>
 
