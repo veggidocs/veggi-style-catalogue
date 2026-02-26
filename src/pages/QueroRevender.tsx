@@ -19,7 +19,7 @@ const tipoLojaOptions = [
 
 
 const valorCards = [
-  { icon: TrendingUp, iconColor: "#C1D88F", number: "2.5x", label: "MARKUP MÉDIO", desc: "Margem real para lucro consistente. Baixo investimento para testar." },
+  { icon: TrendingUp, iconColor: "#C1D88F", number: "2.5x", label: "MARKUP MÉDIO", desc: "Margem real para lucro consistente.\nBaixo investimento para testar." },
   { icon: PackageCheck, iconColor: "#B9CFEF", number: "100%", label: "SUPORTE DE VENDA", desc: "Fotos profissionais, vídeos 360°, guia de exposição e material de PDV inclusos." },
   { icon: Award, iconColor: "#BA565E", number: "Warner", label: "LICENCIADA OFICIAL", desc: "Looney Tunes, Harry Potter, Tom & Jerry. Personagens que vendem sozinhos quando bem expostos." },
   { icon: ShieldCheck, iconColor: "#471418", number: "45", label: "ANOS DE HISTÓRIA", desc: "Mais de 1.000 lojistas parceiros em todo o Brasil. Qualidade que se sente no toque." },
@@ -393,7 +393,7 @@ const QueroRevender = () => {
                   <span className="block font-label font-medium text-[12px] tracking-[0.15em] uppercase text-muted-foreground mb-3">
                     {card.label}
                   </span>
-                  <p className="font-sans text-[14px] text-muted-foreground leading-relaxed">
+                  <p className="font-sans text-[14px] text-muted-foreground leading-relaxed whitespace-pre-line">
                     {card.desc}
                   </p>
                 </div>
