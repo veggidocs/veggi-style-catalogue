@@ -1,110 +1,93 @@
-import { useState } from "react";
+import { Store, Package, Check } from "lucide-react";
+import heroImage from "@/assets/hero-sleepwear.jpg";
+
+const newClientChecks = [
+  "Cadastro rápido e sem burocracia",
+  "Condições especiais para primeira compra",
+  "Suporte comercial dedicado",
+];
+
+const existingClientChecks = [
+  "Acesso direto ao catálogo completo",
+  "Histórico de pedidos e favoritos",
+  "Entrega expressa para reposição",
+];
 
 const CTASection = () => {
-  const [formType, setFormType] = useState<"new" | "existing">("new");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    storeName: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Obrigado! Entraremos em contato em breve.");
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   return (
-    <section id="contato" className="min-h-screen grid lg:grid-cols-2">
-      {/* Left - Visual */}
-      <div className="bg-primary flex items-center justify-center p-12 md:p-20">
-        <div className="max-w-md text-center lg:text-left">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground leading-tight mb-8">
-            Vamos
-            <br />
-            conversar
-          </h2>
-          <p className="text-lg text-primary-foreground/60 font-sans">
-            45 anos ajudando lojistas a construir estoques rentáveis
-          </p>
-        </div>
+    <section
+      id="contato"
+      className="relative py-24 md:py-32"
+    >
+      {/* Background image + overlay */}
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/70" />
       </div>
 
-      {/* Right - Form */}
-      <div id="cliente" className="bg-background flex items-center justify-center p-8 md:p-12 lg:p-20">
-        <div className="w-full max-w-md">
-          {/* Toggle */}
-          <div className="flex gap-2 mb-10">
-            <button
-              onClick={() => setFormType("new")}
-              className={`flex-1 py-3 font-label text-xs tracking-[0.15em] uppercase transition-all duration-300 ${
-                formType === "new"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-muted-foreground hover:bg-border"
-              }`}
-            >
-              Quero revender
-            </button>
-            <button
-              onClick={() => setFormType("existing")}
-              className={`flex-1 py-3 font-label text-xs tracking-[0.15em] uppercase transition-all duration-300 ${
-                formType === "existing"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-muted-foreground hover:bg-border"
-              }`}
-            >
-              Já sou cliente
-            </button>
+      <div className="relative z-10 container mx-auto px-6 lg:px-16">
+        {/* Header */}
+        <div className="text-center mb-14 md:mb-20">
+          <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-4">
+            Próximo passo
+          </p>
+          <h2 className="font-heading text-[36px] md:text-[44px] font-bold text-white leading-tight mb-4">
+            Pronto para <span className="italic text-accent">crescer</span> com a Veggi?
+          </h2>
+          <p className="text-lg font-sans text-white/85 max-w-xl mx-auto">
+            Junte-se a mais de 1.000 lojistas parceiros. Venda exclusiva B2B.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-10">
+          {/* Card — Novo lojista */}
+          <div className="rounded-xl p-8 border border-white/20 bg-white/10 backdrop-blur-md">
+            <Store className="text-white mb-4" size={32} strokeWidth={1.5} />
+            <h3 className="font-label text-xl font-semibold text-white normal-case tracking-normal mb-1">
+              Novo lojista
+            </h3>
+            <p className="text-sm font-sans text-white/80 mb-6">
+              Quero revender Veggi
+            </p>
+            <ul className="space-y-3">
+              {newClientChecks.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <Check className="text-accent mt-0.5 shrink-0" size={16} strokeWidth={2.5} />
+                  <span className="text-sm font-sans text-white">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input
-              type="text"
-              name="name"
-              placeholder="Seu nome"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-0 py-4 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors font-sans"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-0 py-4 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors font-sans"
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="WhatsApp"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              className="w-full px-0 py-4 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors font-sans"
-            />
-            <input
-              type="text"
-              name="storeName"
-              placeholder="Nome da loja"
-              value={formData.storeName}
-              onChange={handleChange}
-              required
-              className="w-full px-0 py-4 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors font-sans"
-            />
-
-            <button type="submit" className="w-full btn-primary mt-8">
-              {formType === "new" ? "Solicitar contato" : "Acessar área do cliente"}
-            </button>
-          </form>
+          {/* Card — Já sou cliente */}
+          <div className="rounded-xl p-8 border border-white/20 bg-white/10 backdrop-blur-md">
+            <Package className="text-white mb-4" size={32} strokeWidth={1.5} />
+            <h3 className="font-label text-xl font-semibold text-white normal-case tracking-normal mb-1">
+              Já sou cliente
+            </h3>
+            <p className="text-sm font-sans text-white/80 mb-6">
+              Quero fazer reposição
+            </p>
+            <ul className="space-y-3">
+              {existingClientChecks.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <Check className="text-accent mt-0.5 shrink-0" size={16} strokeWidth={2.5} />
+                  <span className="text-sm font-sans text-white">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
+
+        {/* Note */}
+        <p className="text-center text-xs font-sans text-white/60">
+          Venda exclusiva para lojistas multimarcas com CNPJ ativo
+        </p>
       </div>
     </section>
   );
