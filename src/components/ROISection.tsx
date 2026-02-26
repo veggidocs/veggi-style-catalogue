@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Slider } from "@/components/ui/slider";
 
 const categories = [
-  { label: "Adulto", cost: 45, price: 120 },
-  { label: "Infantil", cost: 35, price: 89 },
-  { label: "Licenciados", cost: 40, price: 99 },
+  { label: "Adulto", cost: 60, price: 120 },
+  { label: "Infantil", cost: 45, price: 89 },
+  { label: "Licenciados", cost: 65, price: 99 },
 ];
 
 const fmt = (v: number) =>
