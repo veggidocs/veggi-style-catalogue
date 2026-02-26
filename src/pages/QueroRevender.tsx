@@ -240,13 +240,22 @@ const QueroRevender = () => {
                 {/* Submit */}
                 <button
                   type="submit"
-                  disabled={!isFormValid || isLoading}
-                  className="w-full mt-2 py-3.5 bg-primary text-primary-foreground font-label font-semibold text-[14px] tracking-[0.1em] uppercase rounded-lg transition-all duration-300 hover:bg-[#5a1e22] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  disabled={!isFormValid || isLoading || formSubmitted}
+                  className={`w-full mt-2 py-3.5 font-label font-semibold text-[14px] tracking-[0.1em] uppercase rounded-lg transition-all duration-300 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
+                    formSubmitted
+                      ? "bg-green-600 text-white disabled:opacity-100"
+                      : "bg-primary text-primary-foreground hover:bg-[#5a1e22] disabled:opacity-50"
+                  }`}
                 >
                   {isLoading ? (
                     <>
                       <Loader2 className="animate-spin" size={18} />
                       ENVIANDO...
+                    </>
+                  ) : formSubmitted ? (
+                    <>
+                      <CheckCircle size={18} />
+                      ENVIADO
                     </>
                   ) : (
                     "CONTINUAR"
@@ -342,7 +351,10 @@ const QueroRevender = () => {
                   <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
                     Encaminhamos seus dados ao representante da sua região. Retorno em até 24h úteis.
                   </p>
-                  <button className="block w-full text-center py-3 bg-white border border-primary text-primary font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-primary/5">
+                  <button
+                    onClick={() => toast({ title: "Pronto!", description: "Nosso representante entrará em contato em até 24h úteis." })}
+                    className="block w-full text-center py-3 bg-white border border-primary text-primary font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-primary/5"
+                  >
                     AGUARDAR CONTATO
                   </button>
                 </div>
