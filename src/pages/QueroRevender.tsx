@@ -295,11 +295,11 @@ const QueroRevender = () => {
               {/* Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 {/* Card 1 — IA de Voz */}
-                <div className="relative bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
-                  <span className="absolute top-4 right-4 bg-accent text-white text-[10px] font-label font-semibold uppercase px-2 py-0.5 rounded">
-                    NOVO
-                  </span>
-                  <Headset className="text-primary mb-5" size={40} strokeWidth={1.5} />
+                <div className="relative flex flex-col bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+                   <span className="absolute top-4 right-4 bg-accent text-white text-[10px] font-label font-semibold uppercase px-2 py-0.5 rounded">
+                     NOVO
+                   </span>
+                   <Headset className="text-primary mb-5" size={40} strokeWidth={1.5} />
                   <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
                     Atendente Virtual
                   </h3>
@@ -309,55 +309,55 @@ const QueroRevender = () => {
                   <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
                     Tire dúvidas sobre linhas, investimento e condições comerciais. Atendimento imediato, 24h.
                   </p>
-                  <button
-                    onClick={() => alert("Em breve! Nosso atendente virtual está sendo preparado.")}
-                    className="block w-full text-center py-3 bg-primary text-primary-foreground font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-[#5a1e22]"
-                  >
-                    FALAR AGORA
-                  </button>
+                   <button
+                     onClick={() => alert("Em breve! Nosso atendente virtual está sendo preparado.")}
+                     className="mt-auto block w-full text-center py-3 bg-primary text-primary-foreground font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-[#5a1e22]"
+                   >
+                     FALAR AGORA
+                   </button>
                 </div>
 
                 {/* Card 2 — WhatsApp */}
-                <div className="relative bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
-                  <MessageCircle className="text-[#25D366] mb-5" size={40} strokeWidth={1.5} />
-                  <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
-                    WhatsApp Comercial
-                  </h3>
-                  <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3">
-                    Converse por texto com nosso time
-                  </p>
-                  <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
-                    Envie mensagem e receba atendimento personalizado no seu WhatsApp.
-                  </p>
-                  <a
-                    href="https://wa.me/553237290909?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20revender%20Veggi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-center py-3 bg-[#25D366] text-white font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-[#1fb855]"
-                  >
-                    CHAMAR NO WHATSAPP
-                  </a>
-                </div>
+                <div className="relative flex flex-col bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+                   <MessageCircle className="text-[#25D366] mb-5" size={40} strokeWidth={1.5} />
+                   <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
+                     Atendimento por WhatsApp
+                   </h3>
+                   <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3">
+                     Atendimento inicial por IA — 24h, 7 dias por semana
+                   </p>
+                   <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
+                     Converse com nossa inteligência artificial pelo WhatsApp. Tire dúvidas sobre linhas, investimento e condições comerciais a qualquer hora.
+                   </p>
+                   <a
+                     href="https://wa.me/553237290909?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20revender%20Veggi"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="mt-auto block w-full text-center py-3 bg-[#25D366] text-white font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-[#1fb855]"
+                   >
+                     CHAMAR NO WHATSAPP
+                   </a>
+                 </div>
 
                 {/* Card 3 — Aguardar Contato */}
-                <div className="relative bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
-                  <PhoneCall className="text-muted-foreground mb-5" size={40} strokeWidth={1.5} />
-                  <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
-                    Receber Ligação
-                  </h3>
-                  <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3">
-                    Nosso representante liga para você
-                  </p>
-                  <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
-                    Encaminhamos seus dados ao representante da sua região. Retorno em até 24h úteis.
-                  </p>
-                  <button
-                    onClick={() => toast({ title: "Pronto!", description: "Nosso representante entrará em contato em até 24h úteis." })}
-                    className="block w-full text-center py-3 bg-white border border-primary text-primary font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-primary/5"
-                  >
-                    AGUARDAR CONTATO
-                  </button>
-                </div>
+                <div className="relative flex flex-col bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+                   <PhoneCall className="text-muted-foreground mb-5" size={40} strokeWidth={1.5} />
+                   <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
+                     Contato Comercial
+                   </h3>
+                   <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3">
+                     Nosso time comercial entra em contato com você
+                   </p>
+                   <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
+                     Encaminhamos seus dados ao time comercial, que fará o atendimento ou agendará uma conversa com o representante da sua região. Este é o canal mais personalizado — retorno em até 48h úteis.
+                   </p>
+                   <button
+                     onClick={() => toast({ title: "Pronto!", description: "Nosso representante entrará em contato em até 48h úteis." })}
+                     className="mt-auto block w-full text-center py-3 bg-white border border-primary text-primary font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-primary/5"
+                   >
+                     AGUARDAR CONTATO
+                   </button>
+                 </div>
               </div>
             </div>
           </section>
