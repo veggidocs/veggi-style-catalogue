@@ -21,12 +21,14 @@ const Index = () => {
         <section id="linhas">
           <EditorialSection />
         </section>
-        <section id="sobre">
-          <SocialProofSection />
+        <SocialProofSection />
+        <section id="depoimentos">
+          <TestimonialsSection />
         </section>
-        <TestimonialsSection />
         <GiftSection />
-        <ROISection />
+        <section id="roi">
+          <ROISection />
+        </section>
         <CTASection />
       </main>
       <Footer />
