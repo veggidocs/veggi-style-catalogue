@@ -44,7 +44,7 @@ const HeroSection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#contato" className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-label text-[13px] tracking-[0.05em] uppercase font-semibold rounded transition-all duration-300 hover:bg-white/90">
+              <a href="/quero-revender" className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-label text-[13px] tracking-[0.05em] uppercase font-semibold rounded transition-all duration-300 hover:bg-white/90">
                 Quero revender
               </a>
               <a

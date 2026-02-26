@@ -63,7 +63,7 @@ const CTASection = () => {
               ))}
             </ul>
             <a
-              href="#"
+              href="/quero-revender"
               className="block w-full mt-6 text-center bg-white text-primary font-label font-semibold text-sm py-3 px-7 rounded hover:bg-[#F5F3F0] transition-colors duration-300 normal-case tracking-normal"
             >
               QUERO REVENDER
