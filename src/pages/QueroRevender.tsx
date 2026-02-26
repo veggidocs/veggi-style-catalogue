@@ -299,14 +299,14 @@ const QueroRevender = () => {
                    <span className="absolute top-4 right-4 bg-accent text-white text-[10px] font-label font-semibold uppercase px-2 py-0.5 rounded">
                      NOVO
                    </span>
-                   <Headset className="text-primary mb-5" size={40} strokeWidth={1.5} />
-                  <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
+                   <Headset className="text-primary mb-5 min-h-[48px]" size={40} strokeWidth={1.5} />
+                  <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case min-h-[64px] flex items-start">
                     Atendente Virtual
                   </h3>
-                  <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3">
+                  <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3 min-h-[48px]">
                     Fale agora por voz com nossa IA
                   </p>
-                  <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
+                  <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6 flex-grow">
                     Tire dúvidas sobre linhas, investimento e condições comerciais. Atendimento imediato, 24h.
                   </p>
                    <button
@@ -319,15 +319,15 @@ const QueroRevender = () => {
 
                 {/* Card 2 — WhatsApp */}
                 <div className="relative flex flex-col bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
-                   <MessageCircle className="text-[#25D366] mb-5" size={40} strokeWidth={1.5} />
-                   <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
+                   <MessageCircle className="text-[#25D366] mb-5 min-h-[48px]" size={40} strokeWidth={1.5} />
+                   <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case min-h-[64px] flex items-start">
                      Atendimento por WhatsApp
                    </h3>
-                   <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3">
+                   <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3 min-h-[48px]">
                      Atendimento inicial por IA — 24h, 7 dias por semana
                    </p>
-                   <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
-                     Converse com nossa inteligência artificial pelo WhatsApp. Tire dúvidas sobre linhas, investimento e condições comerciais a qualquer hora.
+                   <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6 flex-grow">
+                     Tire dúvidas sobre linhas, investimento e condições comerciais a qualquer hora pelo WhatsApp.
                    </p>
                    <a
                      href="https://wa.me/553237290909?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20revender%20Veggi"
@@ -341,14 +341,14 @@ const QueroRevender = () => {
 
                 {/* Card 3 — Aguardar Contato */}
                 <div className="relative flex flex-col bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
-                   <PhoneCall className="text-muted-foreground mb-5" size={40} strokeWidth={1.5} />
-                   <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
+                   <PhoneCall className="text-muted-foreground mb-5 min-h-[48px]" size={40} strokeWidth={1.5} />
+                   <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case min-h-[64px] flex items-start">
                      Contato Comercial
                    </h3>
-                   <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3">
+                   <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3 min-h-[48px]">
                      Nosso time comercial entra em contato com você
                    </p>
-                   <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
+                   <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6 flex-grow">
                      Encaminhamos seus dados ao time comercial, que fará o atendimento ou agendará uma conversa com o representante da sua região. Este é o canal mais personalizado — retorno em até 48h úteis.
                    </p>
                    <button
