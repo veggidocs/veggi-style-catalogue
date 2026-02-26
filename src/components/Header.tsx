@@ -47,7 +47,7 @@ const Header = () => {
               </a>
             ))}
             <a
-              href="#contato"
+              href="/quero-revender"
               className="ml-3 px-6 py-2.5 bg-primary text-primary-foreground font-label text-[13px] font-semibold tracking-[0.05em] uppercase rounded transition-all duration-300 hover:opacity-90"
             >
               Quero revender
@@ -103,7 +103,7 @@ const Header = () => {
               </a>
             ))}
             <a
-              href="#contato"
+              href="/quero-revender"
               onClick={() => setIsMobileMenuOpen(false)}
               className="btn-primary rounded mt-4"
             >
