@@ -12,8 +12,19 @@ const catalogs = [
 
 const CatalogsSection = () => {
   return (
-    <section className="py-4 md:py-8 bg-background">
-      <div className="px-4 md:px-8">
+    <section className="py-16 md:py-24 bg-background">
+      <div className="container mx-auto px-6 lg:px-16">
+        {/* Section Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-4">
+            Coleções 2025
+          </p>
+          <h2 className="font-heading text-4xl md:text-[48px] font-bold text-foreground leading-tight">
+            Catálogos
+          </h2>
+        </div>
+
+        {/* Cards Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {catalogs.map((catalog) => (
             <div
@@ -23,24 +34,29 @@ const CatalogsSection = () => {
               <img
                 src={catalog.image}
                 alt={catalog.name}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
               
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-heading font-bold text-white normal-case tracking-normal">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-heading font-bold text-white normal-case tracking-normal drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]">
                   {catalog.name}
                 </h3>
               </div>
-
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="px-6 py-3 bg-white text-foreground font-label text-xs tracking-[0.15em] uppercase font-semibold">
-                  Ver coleção
-                </span>
-              </div>
             </div>
           ))}
+        </div>
+
+        {/* Download Link */}
+        <div className="text-center mt-10">
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 font-label text-sm font-medium text-primary tracking-[0.05em] hover:text-accent transition-colors duration-300"
+          >
+            Baixar todos os catálogos
+            <span className="text-lg">→</span>
+          </a>
         </div>
       </div>
     </section>
