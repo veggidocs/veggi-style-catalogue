@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Slider } from "@/components/ui/slider";
 
 const categories = [
-  { label: "Adulto", cost: 60, price: 120 },
-  { label: "Infantil", cost: 45, price: 89 },
-  { label: "Licenciados", cost: 65, price: 99 },
+  { label: "Adulto", cost: 60, markup: 130 },
+  { label: "Infantil", cost: 45, markup: 150 },
+  { label: "Licenciados", cost: 65, markup: 130 },
 ];
 
 const fmt = (v: number) =>
@@ -15,9 +15,9 @@ const ROISection = () => {
   const [qty, setQty] = useState(100);
 
   const cat = categories[catIdx];
+  const price = Math.round(cat.cost * (1 + cat.markup / 100));
   const investment = cat.cost * qty;
-  const revenue = cat.price * qty;
-  const markup = ((cat.price - cat.cost) / cat.cost) * 100;
+  const revenue = price * qty;
   const profit = revenue - investment;
 
   return (
@@ -88,7 +88,7 @@ const ROISection = () => {
                 Custo unitário: <strong>{fmt(cat.cost)}</strong>
               </p>
               <p className="text-base text-foreground font-sans">
-                Preço sugerido: <strong>{fmt(cat.price)}</strong>
+                Preço sugerido: <strong>{fmt(price)}</strong>
               </p>
             </div>
           </div>
@@ -110,7 +110,7 @@ const ROISection = () => {
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-white/60 font-sans">Markup</span>
-                <span className="font-heading text-[28px] font-bold text-accent">{markup.toFixed(0)}%</span>
+                <span className="font-heading text-[28px] font-bold text-accent">{cat.markup}%</span>
               </div>
             </div>
 
