@@ -22,40 +22,40 @@ const CTASection = () => {
   return (
     <section id="contato" className="min-h-screen grid lg:grid-cols-2">
       {/* Left - Visual */}
-      <div className="bg-neutral-900 flex items-center justify-center p-12 md:p-20">
+      <div className="bg-primary flex items-center justify-center p-12 md:p-20">
         <div className="max-w-md text-center lg:text-left">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-tight mb-8">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground leading-tight mb-8">
             Vamos
             <br />
             conversar
           </h2>
-          <p className="text-lg text-white/60 font-light">
+          <p className="text-lg text-primary-foreground/60 font-sans">
             45 anos ajudando lojistas a construir estoques rentáveis
           </p>
         </div>
       </div>
 
       {/* Right - Form */}
-      <div id="cliente" className="bg-white flex items-center justify-center p-8 md:p-12 lg:p-20">
+      <div id="cliente" className="bg-background flex items-center justify-center p-8 md:p-12 lg:p-20">
         <div className="w-full max-w-md">
           {/* Toggle */}
           <div className="flex gap-2 mb-10">
             <button
               onClick={() => setFormType("new")}
-              className={`flex-1 py-3 text-sm font-medium tracking-wide uppercase transition-all duration-300 ${
+              className={`flex-1 py-3 font-label text-xs tracking-[0.15em] uppercase transition-all duration-300 ${
                 formType === "new"
-                  ? "bg-neutral-900 text-white"
-                  : "bg-neutral-100 text-neutral-500 hover:bg-neutral-200"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:bg-border"
               }`}
             >
               Quero revender
             </button>
             <button
               onClick={() => setFormType("existing")}
-              className={`flex-1 py-3 text-sm font-medium tracking-wide uppercase transition-all duration-300 ${
+              className={`flex-1 py-3 font-label text-xs tracking-[0.15em] uppercase transition-all duration-300 ${
                 formType === "existing"
-                  ? "bg-neutral-900 text-white"
-                  : "bg-neutral-100 text-neutral-500 hover:bg-neutral-200"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:bg-border"
               }`}
             >
               Já sou cliente
@@ -70,7 +70,7 @@ const CTASection = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-0 py-4 bg-transparent border-0 border-b border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-neutral-900 transition-colors"
+              className="w-full px-0 py-4 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors font-sans"
             />
             <input
               type="email"
@@ -79,7 +79,7 @@ const CTASection = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-0 py-4 bg-transparent border-0 border-b border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-neutral-900 transition-colors"
+              className="w-full px-0 py-4 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors font-sans"
             />
             <input
               type="tel"
@@ -88,7 +88,7 @@ const CTASection = () => {
               value={formData.phone}
               onChange={handleChange}
               required
-              className="w-full px-0 py-4 bg-transparent border-0 border-b border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-neutral-900 transition-colors"
+              className="w-full px-0 py-4 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors font-sans"
             />
             <input
               type="text"
@@ -97,10 +97,10 @@ const CTASection = () => {
               value={formData.storeName}
               onChange={handleChange}
               required
-              className="w-full px-0 py-4 bg-transparent border-0 border-b border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-neutral-900 transition-colors"
+              className="w-full px-0 py-4 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors font-sans"
             />
 
-            <button type="submit" className="w-full inline-flex items-center justify-center px-8 py-4 bg-neutral-900 text-white text-sm font-medium tracking-wide uppercase transition-all duration-300 hover:bg-neutral-800 mt-8">
+            <button type="submit" className="w-full btn-primary mt-8">
               {formType === "new" ? "Solicitar contato" : "Acessar área do cliente"}
             </button>
           </form>

@@ -2,71 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap');
 
-/* Veggi B2B Landing Page - Minimalist Neutral Design System */
+/* Veggi B2B Landing Page - Editorial Neutral Design System */
 
 @layer base {
   :root {
-    /* Core Colors - Clean Neutral Gray Palette */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 12%;
+    /* Core Colors - Warm Neutral Palette */
+    --background: 50 20% 98%;
+    --foreground: 0 0% 18%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 12%;
+    --card: 40 13% 96%;
+    --card-foreground: 0 0% 18%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 12%;
+    --popover: 50 20% 98%;
+    --popover-foreground: 0 0% 18%;
 
-    /* Primary - Graphite */
-    --primary: 0 0% 15%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary - Marrom Aventura Veggi #471418 */
+    --primary: 356 57% 18%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Light Gray */
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 20%;
+    /* Secondary - Warm Off-white */
+    --secondary: 40 13% 96%;
+    --secondary-foreground: 0 0% 18%;
 
-    /* Muted - Soft Gray */
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    /* Muted */
+    --muted: 40 13% 96%;
+    --muted-foreground: 0 0% 42%;
 
-    /* Accent - Charcoal (elegant, no vibrant colors) */
-    --accent: 0 0% 25%;
-    --accent-foreground: 0 0% 98%;
+    /* Accent - Vivacidade Veggi #BA565E */
+    --accent: 355 40% 53%;
+    --accent-foreground: 0 0% 100%;
 
     /* Destructive */
     --destructive: 0 0% 40%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 25%;
+    --border: 40 10% 90%;
+    --input: 40 10% 90%;
+    --ring: 356 57% 18%;
 
     --radius: 0.25rem;
 
-    /* Veggi Custom Tokens - Neutral Grays */
-    --veggi-cream: 0 0% 98%;
-    --veggi-sand: 0 0% 92%;
-    --veggi-charcoal: 0 0% 15%;
-    --veggi-stone: 0 0% 50%;
-    --veggi-rose: 0 0% 35%;
-    --veggi-blush: 0 0% 96%;
-    --veggi-gold: 0 0% 40%;
+    /* Veggi Custom Tokens */
+    --veggi-offwhite: 50 20% 98%;
+    --veggi-section: 30 13% 95%;
+    --veggi-charcoal: 0 0% 18%;
+    --veggi-text-secondary: 0 0% 42%;
+    --veggi-marrom: 356 57% 18%;
+    --veggi-vivacidade: 355 40% 53%;
+    --veggi-border: 35 10% 90%;
 
-    /* Shadows - Subtle */
+    /* Shadows */
     --shadow-soft: 0 4px 30px hsl(0 0% 0% / 0.04);
     --shadow-medium: 0 8px 40px hsl(0 0% 0% / 0.08);
     --shadow-dramatic: 0 20px 60px hsl(0 0% 0% / 0.12);
 
     /* Sidebar */
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 50 20% 98%;
     --sidebar-foreground: 0 0% 26%;
-    --sidebar-primary: 0 0% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 96%;
+    --sidebar-primary: 356 57% 18%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 13% 96%;
     --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 91%;
-    --sidebar-ring: 0 0% 25%;
+    --sidebar-border: 40 10% 90%;
+    --sidebar-ring: 356 57% 18%;
   }
 
   .dark {
@@ -76,27 +76,27 @@
     --card-foreground: 0 0% 95%;
     --popover: 0 0% 12%;
     --popover-foreground: 0 0% 95%;
-    --primary: 0 0% 95%;
-    --primary-foreground: 0 0% 12%;
+    --primary: 355 40% 53%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 18%;
     --secondary-foreground: 0 0% 95%;
     --muted: 0 0% 20%;
     --muted-foreground: 0 0% 60%;
-    --accent: 0 0% 75%;
-    --accent-foreground: 0 0% 12%;
+    --accent: 356 57% 18%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 0% 40%;
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 0 0% 75%;
+    --ring: 355 40% 53%;
     --sidebar-background: 0 0% 10%;
     --sidebar-foreground: 0 0% 96%;
-    --sidebar-primary: 0 0% 48%;
+    --sidebar-primary: 355 40% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 16%;
     --sidebar-accent-foreground: 0 0% 96%;
     --sidebar-border: 0 0% 16%;
-    --sidebar-ring: 0 0% 60%;
+    --sidebar-ring: 355 40% 53%;
   }
 }
 
@@ -110,38 +110,63 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Open Sans', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+  h1, h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
 }
 
 @layer components {
   .headline-hero {
-    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium leading-tight tracking-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight;
+    font-family: 'Quicksand', sans-serif;
   }
 
   .headline-section {
-    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-medium leading-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+    font-family: 'Quicksand', sans-serif;
   }
 
   .headline-card {
-    @apply text-2xl md:text-3xl font-serif font-medium;
+    @apply text-2xl md:text-3xl font-bold;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .label-upper {
+    @apply text-xs font-medium;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
 
   .body-large {
-    @apply text-lg md:text-xl font-light leading-relaxed;
+    @apply text-lg md:text-xl font-normal leading-relaxed;
+    font-family: 'Open Sans', sans-serif;
   }
 
   .body-small {
-    @apply text-sm md:text-base font-light;
+    @apply text-sm md:text-base font-normal;
+    font-family: 'Open Sans', sans-serif;
   }
 
   .caption {
-    @apply text-xs uppercase tracking-[0.2em] font-medium;
+    @apply text-xs font-medium;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
 
   .editorial-grid {
@@ -153,19 +178,32 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium tracking-wide uppercase text-sm transition-all duration-300;
+    @apply inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground text-sm transition-all duration-300;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
   
   .btn-primary:hover {
     box-shadow: var(--shadow-dramatic);
+    opacity: 0.9;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-medium tracking-wide uppercase text-sm transition-all duration-300 hover:bg-primary hover:text-primary-foreground;
+    @apply inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary text-sm transition-all duration-300 hover:bg-primary hover:text-primary-foreground;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-accent text-accent-foreground font-medium tracking-wide uppercase text-sm transition-all duration-300 hover:opacity-90;
+    @apply inline-flex items-center justify-center px-8 py-4 bg-accent text-accent-foreground text-sm transition-all duration-300 hover:opacity-90;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
   
   .btn-accent:hover {
@@ -189,7 +227,8 @@
   }
 
   .stat-number {
-    @apply text-5xl md:text-6xl lg:text-7xl font-serif font-medium;
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold;
+    font-family: 'Quicksand', sans-serif;
   }
 
   .section-padding {
@@ -215,33 +254,17 @@
   }
 
   @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
 }

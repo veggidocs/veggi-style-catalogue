@@ -4,20 +4,20 @@ import editorial2 from "@/assets/editorial-2.jpg";
 const EditorialSection = () => {
   return (
     <section className="bg-background">
-      {/* First Editorial Block - Full Width Image with Floating Text */}
+      {/* First Editorial Block */}
       <div className="relative h-screen">
         <img
           src={editorial1}
           alt="Sleepwear Collection"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-l from-white/90 via-white/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-l from-background/90 via-background/40 to-transparent" />
         
         <div className="absolute top-1/2 right-8 md:right-16 lg:right-24 -translate-y-1/2 text-right">
-          <p className="text-xs uppercase tracking-[0.3em] text-neutral-500 mb-4">
+          <p className="label-upper text-muted-foreground mb-4">
             Linha Sleepwear
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-neutral-900 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight">
             Elegância
             <br />
             para o dia a dia
@@ -25,7 +25,7 @@ const EditorialSection = () => {
         </div>
       </div>
 
-      {/* Second Editorial Block - Split Layout */}
+      {/* Second Editorial Block */}
       <div className="grid lg:grid-cols-2 min-h-screen">
         <div className="relative aspect-square lg:aspect-auto">
           <img
@@ -35,12 +35,12 @@ const EditorialSection = () => {
           />
         </div>
         
-        <div className="flex items-center justify-center bg-neutral-100 p-12 md:p-20">
+        <div className="flex items-center justify-center bg-secondary p-12 md:p-20">
           <div className="max-w-md">
-            <p className="text-xs uppercase tracking-[0.3em] text-neutral-500 mb-6">
+            <p className="label-upper text-muted-foreground mb-6">
               Sonho e Fantasia
             </p>
-            <h2 className="text-4xl md:text-5xl font-serif text-neutral-900 leading-tight mb-8">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground leading-tight mb-8">
               Momentos que
               <br />
               viram memória
