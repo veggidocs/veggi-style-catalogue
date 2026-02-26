@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2 } from "lucide-react";
+import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2, ChevronDown } from "lucide-react";
+import heroImage from "@/assets/hero-sleepwear.jpg";
 import { sendToRDStation } from "@/services/rdstation";
 import { formatPhone } from "@/utils/formatPhone";
 import { useToast } from "@/hooks/use-toast";
@@ -103,20 +104,40 @@ const QueroRevender = () => {
       <Header />
 
       <main>
-        {/* Hero de Boas-Vindas */}
-        <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-background">
-          <div className="container mx-auto px-6 lg:px-16 text-center">
-            <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-4">
-              Seja um lojista parceiro
+        {/* Hero */}
+        <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center pt-20 pb-16 md:pt-20 md:pb-16 overflow-hidden">
+          {/* Background */}
+          <div className="absolute inset-0">
+            <img
+              src={heroImage}
+              alt="Loja multimarcas"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-[rgba(45,45,45,0.7)]" />
+          </div>
+
+          <div className="relative z-10 container mx-auto px-6 lg:px-16 text-center">
+            <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-5">
+              Novo lojista
             </p>
-            <h1 className="font-heading text-[40px] md:text-[56px] font-bold text-foreground leading-tight mb-6">
-              Comece a revender{" "}
-              <span className="italic text-accent">Veggi</span>
+            <h1 className="font-heading text-[28px] md:text-[42px] font-bold text-white leading-tight mb-6 max-w-3xl mx-auto">
+              Comece a revender a marca que mais{" "}
+              <span className="italic text-accent">cresce</span>{" "}
+              em sleepwear premium
             </h1>
-            <p className="text-lg font-sans text-muted-foreground max-w-xl mx-auto">
-              Cadastro rápido, sem burocracia. Junte-se a mais de 1.000 lojistas
-              que confiam na marca há 45 anos.
+            <p className="text-base md:text-lg font-sans text-white/85 max-w-[600px] mx-auto">
+              Preencha seus dados e escolha como quer ser atendido. Em minutos,
+              você estará conectado ao nosso time comercial.
             </p>
+          </div>
+
+          {/* Chevron animado */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+            <ChevronDown
+              className="text-white/60 animate-bounce"
+              size={28}
+              strokeWidth={1.5}
+            />
           </div>
         </section>
 
