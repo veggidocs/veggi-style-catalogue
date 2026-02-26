@@ -8,6 +8,7 @@ import SocialProofSection from "@/components/SocialProofSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import GiftSection from "@/components/GiftSection";
 import ROISection from "@/components/ROISection";
+import SellOutSupportSection from "@/components/SellOutSupportSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
@@ -33,6 +34,7 @@ const Index = () => {
         <section id="roi">
           <ROISection />
         </section>
+        <SellOutSupportSection />
         <CTASection />
       </main>
       <Footer />
