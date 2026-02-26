@@ -14,7 +14,7 @@ const SocialProofSection = () => {
               <span className="block text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-primary-foreground">
                 {stat.number}
               </span>
-              <span className="font-label text-xs tracking-[0.15em] uppercase text-primary-foreground/50">
+              <span className="font-label text-[11px] tracking-[0.15em] uppercase text-white/70">
                 {stat.label}
               </span>
             </div>
@@ -24,7 +24,7 @@ const SocialProofSection = () => {
             <span className="block text-2xl md:text-3xl font-heading font-bold text-primary-foreground/80 mb-2">
               Warner Bros
             </span>
-            <span className="font-label text-xs tracking-[0.15em] uppercase text-primary-foreground/50">
+            <span className="font-label text-[11px] tracking-[0.15em] uppercase text-white/70">
               Licenciada oficial
             </span>
           </div>

@@ -26,15 +26,15 @@ const Index = () => {
         </section>
         <PackagingSection />
         <MixSection />
-        <SocialProofSection />
-        <section id="depoimentos">
-          <TestimonialsSection />
-        </section>
         <GiftSection />
         <section id="roi">
           <ROISection />
         </section>
         <SellOutSupportSection />
+        <SocialProofSection />
+        <section id="depoimentos">
+          <TestimonialsSection />
+        </section>
         <CTASection />
       </main>
       <Footer />
