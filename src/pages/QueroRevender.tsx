@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2, ChevronDown, Headset, PhoneCall, CheckCircle } from "lucide-react";
+import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2, ChevronDown, Headset, PhoneCall, CheckCircle, PackageCheck, Award, ShieldCheck } from "lucide-react";
 import heroImage from "@/assets/hero-sleepwear.jpg";
 import { sendToRDStation } from "@/services/rdstation";
 import { formatPhone } from "@/utils/formatPhone";
@@ -26,11 +26,11 @@ const comoConheceuOptions = [
 ];
 
 
-const blocos = [
-  { icon: Package, title: "Pedido mínimo acessível", desc: "Comece com um mix estratégico sem precisar de grande investimento inicial." },
-  { icon: Shield, title: "Marca consolidada", desc: "45 anos de tradição e qualidade reconhecida em todo o Brasil." },
-  { icon: TrendingUp, title: "Alta giro de estoque", desc: "Sleepwear é recompra garantida — seus clientes voltam sempre." },
-  { icon: Heart, title: "Suporte dedicado", desc: "Representante comercial exclusivo e materiais de sell-out inclusos." },
+const valorCards = [
+  { icon: TrendingUp, iconColor: "#C1D88F", number: "2.5x", label: "MARKUP MÉDIO", desc: "Margem real para lucro consistente. Investimento testador a partir de R$ 800." },
+  { icon: PackageCheck, iconColor: "#B9CFEF", number: "100%", label: "SUPORTE DE VENDA", desc: "Fotos profissionais, vídeos 360°, guia de exposição e material de PDV inclusos." },
+  { icon: Award, iconColor: "#BA565E", number: "Warner", label: "LICENCIADA OFICIAL", desc: "Looney Tunes, Harry Potter, Tom & Jerry. Personagens que vendem sozinhos quando bem expostos." },
+  { icon: ShieldCheck, iconColor: "#471418", number: "45", label: "ANOS DE HISTÓRIA", desc: "Mais de 1.000 lojistas parceiros em todo o Brasil. Qualidade que se sente no toque." },
 ];
 
 const inputClass =
@@ -360,28 +360,37 @@ const QueroRevender = () => {
         )}
 
         {/* Blocos de Valor */}
-        <section className="py-20 md:py-28 bg-background">
+        <section className="py-20 bg-background">
           <div className="container mx-auto px-6 lg:px-16">
             <div className="text-center mb-14">
               <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-4">
                 Por que revender Veggi
               </p>
-              <h2 className="font-heading text-[28px] md:text-[36px] font-bold text-foreground">
-                Vantagens para seu negócio
+              <h2 className="font-heading text-[32px] font-bold text-foreground">
+                O que você ganha como parceiro
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
-              {blocos.map((bloco, i) => (
-                <div key={i} className="text-center">
-                  <div className="w-14 h-14 mx-auto mb-5 rounded-full bg-primary/5 flex items-center justify-center">
-                    <bloco.icon className="text-primary" size={24} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="font-label text-sm font-semibold text-foreground normal-case tracking-normal mb-2">
-                    {bloco.title}
-                  </h3>
-                  <p className="text-sm font-sans text-muted-foreground leading-relaxed">
-                    {bloco.desc}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {valorCards.map((card, i) => (
+                <div
+                  key={i}
+                  className="bg-white rounded-xl p-8 border border-border text-center"
+                >
+                  <card.icon
+                    className="mx-auto mb-4"
+                    size={28}
+                    strokeWidth={1.5}
+                    style={{ color: card.iconColor }}
+                  />
+                  <span className="block font-heading text-[48px] font-bold text-foreground leading-none mb-1">
+                    {card.number}
+                  </span>
+                  <span className="block font-label font-medium text-[12px] tracking-[0.15em] uppercase text-muted-foreground mb-3">
+                    {card.label}
+                  </span>
+                  <p className="font-sans text-[14px] text-muted-foreground leading-relaxed">
+                    {card.desc}
                   </p>
                 </div>
               ))}
