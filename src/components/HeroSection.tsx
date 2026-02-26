@@ -15,23 +15,41 @@ const HeroSection = () => {
       <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-32">
         <div className="container mx-auto px-6 lg:px-16">
           <div className="max-w-xl animate-fade-up">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-white leading-[0.9] tracking-tight mb-8">
+            {/* Badge */}
+            <span className="inline-block px-4 py-1.5 border border-white/50 rounded-sm font-label text-[12px] tracking-[0.2em] uppercase text-white mb-8">
+              Exclusivo B2B para lojistas
+            </span>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-white leading-[0.9] tracking-tight mb-6">
               Sleepwear
               <br />
-              <span className="text-white/60">B2B</span>
+              que <span className="text-accent">vende</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/70 font-sans mb-10 max-w-md">
-              45 anos · +1.000 PDVs · Licenciada Warner Bros
+            <p className="text-lg text-white/90 font-sans mb-10 max-w-md">
+              45 anos vestindo o Brasil. Mais de 1.000 lojistas parceiros.
             </p>
 
+            {/* Credential Badges */}
+            <div className="flex flex-wrap gap-3 mb-10">
+              <span className="px-3 py-1 border border-white/30 font-label text-[10px] tracking-[0.15em] uppercase text-white/70">
+                45 anos
+              </span>
+              <span className="px-3 py-1 border border-white/30 font-label text-[10px] tracking-[0.15em] uppercase text-white/70">
+                +1.000 PDVs
+              </span>
+              <span className="px-3 py-1 border border-white/30 font-label text-[10px] tracking-[0.15em] uppercase text-white/70">
+                Licenciada Warner Bros
+              </span>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#contato" className="inline-flex items-center justify-center px-8 py-4 bg-white text-foreground font-label text-xs tracking-[0.15em] uppercase transition-all duration-300 hover:bg-white/90 font-semibold">
+              <a href="#contato" className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-label text-[13px] tracking-[0.05em] uppercase font-semibold rounded transition-all duration-300 hover:bg-white/90">
                 Quero revender
               </a>
               <a
                 href="#cliente"
-                className="inline-flex items-center justify-center px-8 py-4 border border-white/40 text-white font-label text-xs tracking-[0.15em] uppercase transition-all duration-300 hover:bg-white/10 font-semibold"
+                className="inline-flex items-center justify-center px-8 py-4 border border-white/50 text-white font-label text-[13px] tracking-[0.05em] uppercase font-semibold rounded transition-all duration-300 hover:bg-white/10"
               >
                 Já sou cliente
               </a>
