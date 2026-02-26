@@ -17,7 +17,7 @@ const Header = () => {
     { href: "#linhas", label: "Linhas" },
     { href: "#roi", label: "Calculadora" },
     { href: "#depoimentos", label: "Depoimentos" },
-    { href: "#cliente", label: "Área do cliente" },
+    { href: "https://veggi.com.br/portal", label: "Área do cliente", external: true },
   ];
 
   return (
@@ -41,6 +41,7 @@ const Header = () => {
               <a
                 key={link.href}
                 href={link.href}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="font-label text-[13px] tracking-[0.05em] text-foreground transition-colors duration-300 hover:text-accent"
               >
                 {link.label}
@@ -96,6 +97,7 @@ const Header = () => {
               <a
                 key={link.href}
                 href={link.href}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-xl font-label font-medium text-foreground tracking-[0.05em]"
               >
