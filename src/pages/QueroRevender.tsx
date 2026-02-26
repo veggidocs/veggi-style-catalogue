@@ -267,7 +267,7 @@ const QueroRevender = () => {
           <section
             id="canais"
             className="py-20 animate-fade-in"
-            style={{ backgroundColor: "hsl(var(--veggi-section))" }}
+            style={{ backgroundColor: "#F5F3F0" }}
           >
             <div className="container mx-auto px-6 lg:px-16">
               {/* Header */}
@@ -286,7 +286,7 @@ const QueroRevender = () => {
               {/* Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 {/* Card 1 — IA de Voz */}
-                <div className="relative bg-white rounded-xl p-8 border border-border shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+                <div className="relative bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
                   <span className="absolute top-4 right-4 bg-accent text-white text-[10px] font-label font-semibold uppercase px-2 py-0.5 rounded">
                     NOVO
                   </span>
@@ -300,16 +300,16 @@ const QueroRevender = () => {
                   <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
                     Tire dúvidas sobre linhas, investimento e condições comerciais. Atendimento imediato, 24h.
                   </p>
-                  <a
-                    href="#"
+                  <button
+                    onClick={() => alert("Em breve! Nosso atendente virtual está sendo preparado.")}
                     className="block w-full text-center py-3 bg-primary text-primary-foreground font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-[#5a1e22]"
                   >
                     FALAR AGORA
-                  </a>
+                  </button>
                 </div>
 
                 {/* Card 2 — WhatsApp */}
-                <div className="relative bg-white rounded-xl p-8 border border-border shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+                <div className="relative bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
                   <MessageCircle className="text-[#25D366] mb-5" size={40} strokeWidth={1.5} />
                   <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
                     WhatsApp Comercial
@@ -331,7 +331,7 @@ const QueroRevender = () => {
                 </div>
 
                 {/* Card 3 — Aguardar Contato */}
-                <div className="relative bg-white rounded-xl p-8 border border-border shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+                <div className="relative bg-white rounded-xl p-8 border border-[#E8E6E3] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
                   <PhoneCall className="text-muted-foreground mb-5" size={40} strokeWidth={1.5} />
                   <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
                     Receber Ligação
