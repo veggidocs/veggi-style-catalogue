@@ -4,7 +4,7 @@ interface RDStationFormData {
   telefone: string;
   cidade: string;
   tipoLoja: string;
-  comoConheceu: string;
+  instagram: string;
 }
 
 export const sendToRDStation = async (formData: RDStationFormData): Promise<boolean> => {
@@ -25,7 +25,7 @@ export const sendToRDStation = async (formData: RDStationFormData): Promise<bool
       mobile_phone: formData.telefone,
       city: formData.cidade,
       cf_tipo_loja: formData.tipoLoja,
-      cf_como_conheceu: formData.comoConheceu,
+      cf_instagram: formData.instagram,
       traffic_source: document.referrer || "direto",
       created_at: new Date().toISOString(),
     },

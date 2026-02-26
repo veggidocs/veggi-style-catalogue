@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2, ChevronDown, Headset, PhoneCall, CheckCircle, PackageCheck, Award, ShieldCheck } from "lucide-react";
+import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2, ChevronDown, Headset, PhoneCall, CheckCircle, PackageCheck, Award, ShieldCheck, Instagram } from "lucide-react";
 import heroImage from "@/assets/hero-sleepwear.jpg";
 import { sendToRDStation } from "@/services/rdstation";
 import { formatPhone } from "@/utils/formatPhone";
@@ -16,14 +16,6 @@ const tipoLojaOptions = [
   "Outra",
 ];
 
-const comoConheceuOptions = [
-  "Representante comercial",
-  "Instagram",
-  "Google / Busca",
-  "Indicação de outra lojista",
-  "Feira / Evento",
-  "Outro",
-];
 
 
 const valorCards = [
@@ -48,7 +40,7 @@ const QueroRevender = () => {
     telefone: "",
     cidade: "",
     tipoLoja: "",
-    comoConheceu: "",
+    instagram: "",
   });
 
   const isFormValid =
@@ -229,20 +221,20 @@ const QueroRevender = () => {
                   </select>
                 </div>
 
-                {/* Como conheceu */}
+                {/* Instagram */}
                 <div>
-                  <label className={labelClass}>Como conheceu a Veggi?</label>
-                  <select
-                    name="comoConheceu"
-                    value={formData.comoConheceu}
-                    onChange={handleChange}
-                    className={inputClass}
-                  >
-                    <option value="">Selecione...</option>
-                    {comoConheceuOptions.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                    ))}
-                  </select>
+                  <label className={labelClass}>Instagram da loja</label>
+                  <div className="relative">
+                    <Instagram className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} strokeWidth={1.5} />
+                    <input
+                      type="text"
+                      name="instagram"
+                      value={formData.instagram}
+                      onChange={handleChange}
+                      className={`${inputClass} pl-10`}
+                      placeholder="@sualoja"
+                    />
+                  </div>
                 </div>
 
                 {/* Submit */}
