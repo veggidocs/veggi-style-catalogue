@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['Open Sans', 'sans-serif'],
+        heading: ['Quicksand', 'sans-serif'],
+        label: ['Poppins', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -62,13 +63,13 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         veggi: {
-          cream: "hsl(var(--veggi-cream))",
-          sand: "hsl(var(--veggi-sand))",
+          offwhite: "hsl(var(--veggi-offwhite))",
+          section: "hsl(var(--veggi-section))",
           charcoal: "hsl(var(--veggi-charcoal))",
-          stone: "hsl(var(--veggi-stone))",
-          rose: "hsl(var(--veggi-rose))",
-          blush: "hsl(var(--veggi-blush))",
-          gold: "hsl(var(--veggi-gold))",
+          "text-secondary": "hsl(var(--veggi-text-secondary))",
+          marrom: "hsl(var(--veggi-marrom))",
+          vivacidade: "hsl(var(--veggi-vivacidade))",
+          border: "hsl(var(--veggi-border))",
         },
       },
       borderRadius: {
