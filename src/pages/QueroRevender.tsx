@@ -399,22 +399,35 @@ const QueroRevender = () => {
         </section>
 
         {/* Social Proof Compacto */}
-        <section className="py-16 md:py-20 bg-primary">
-          <div className="container mx-auto px-6 lg:px-16">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
-              <div className="text-center">
-                <span className="block text-5xl md:text-6xl font-heading font-bold text-primary-foreground">45</span>
-                <span className="font-label text-[11px] tracking-[0.15em] uppercase text-white/70">anos</span>
-              </div>
-              <div className="text-center">
-                <span className="block text-5xl md:text-6xl font-heading font-bold text-primary-foreground">+1.000</span>
-                <span className="font-label text-[11px] tracking-[0.15em] uppercase text-white/70">PDVs parceiros</span>
-              </div>
-              <div className="text-center">
-                <span className="block text-5xl md:text-6xl font-heading font-bold text-primary-foreground">+400k</span>
-                <span className="font-label text-[11px] tracking-[0.15em] uppercase text-white/70">peças/ano</span>
-              </div>
+        <section className="py-12 bg-primary">
+          <div className="container mx-auto px-6 lg:px-16 max-w-[800px]">
+            <h2 className="font-heading text-[28px] font-bold text-white text-center mb-10">
+              Quem revende, recomenda
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { quote: "Veggi transformou minha seção de pijamas. Hoje é a categoria que mais gira.", name: "Carla M. — Loja Encanto Kids, SP" },
+                { quote: "O suporte de material fez toda a diferença. As fotos vendem sozinhas no Instagram.", name: "Patrícia S. — Boutique Petit, MG" },
+                { quote: "Licenciados Warner são imbatíveis. Os pais pedem pelo nome.", name: "Juliana C. — Loja Estação Infantil, PR" },
+              ].map((dep, i) => (
+                <div key={i} className="relative pl-4">
+                  <span className="absolute -top-3 -left-1 text-[60px] leading-none text-white/15 font-heading font-bold select-none">
+                    "
+                  </span>
+                  <p className="font-sans text-[15px] text-white/90 italic leading-relaxed">
+                    {dep.quote}
+                  </p>
+                  <p className="font-label font-medium text-[12px] text-white/60 mt-3">
+                    {dep.name}
+                  </p>
+                </div>
+              ))}
             </div>
+
+            <p className="text-center font-sans text-[12px] text-white/40 mt-8">
+              Venda exclusiva para lojistas multimarcas com CNPJ ativo.
+            </p>
           </div>
         </section>
       </main>
