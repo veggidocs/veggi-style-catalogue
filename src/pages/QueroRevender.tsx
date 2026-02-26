@@ -1,80 +1,102 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Check, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart } from "lucide-react";
+import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2 } from "lucide-react";
+import { sendToRDStation } from "@/services/rdstation";
+import { formatPhone } from "@/utils/formatPhone";
+import { useToast } from "@/hooks/use-toast";
+
+const tipoLojaOptions = [
+  "Multimarcas",
+  "Moda infantil",
+  "Moda feminina",
+  "Lingerie e sleepwear",
+  "Presentes e enxoval",
+  "Outra",
+];
+
+const comoConheceuOptions = [
+  "Representante comercial",
+  "Instagram",
+  "Google / Busca",
+  "Indicação de outra lojista",
+  "Feira / Evento",
+  "Outro",
+];
+
+const canais = [
+  { id: "whatsapp", icon: MessageCircle, title: "WhatsApp", desc: "Resposta em até 2h" },
+  { id: "telefone", icon: Phone, title: "Telefone", desc: "(32) 3729-0909" },
+  { id: "email", icon: Mail, title: "E-mail", desc: "faleconosco@veggi.com.br" },
+];
+
+const blocos = [
+  { icon: Package, title: "Pedido mínimo acessível", desc: "Comece com um mix estratégico sem precisar de grande investimento inicial." },
+  { icon: Shield, title: "Marca consolidada", desc: "45 anos de tradição e qualidade reconhecida em todo o Brasil." },
+  { icon: TrendingUp, title: "Alta giro de estoque", desc: "Sleepwear é recompra garantida — seus clientes voltam sempre." },
+  { icon: Heart, title: "Suporte dedicado", desc: "Representante comercial exclusivo e materiais de sell-out inclusos." },
+];
+
+const inputClass =
+  "w-full px-4 py-3 bg-white border border-[hsl(35,10%,90%)] rounded-lg font-sans text-[15px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(186,86,94,0.1)] transition-all";
+
+const labelClass = "block font-label font-medium text-[13px] text-foreground mb-1.5 normal-case tracking-normal";
 
 const QueroRevender = () => {
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const [canalEscolhido, setCanalEscolhido] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     nome: "",
-    loja: "",
-    cnpj: "",
-    cidade: "",
-    estado: "",
-    whatsapp: "",
     email: "",
+    telefone: "",
+    cidade: "",
+    tipoLoja: "",
+    comoConheceu: "",
   });
 
-  const [canalEscolhido, setCanalEscolhido] = useState<string | null>(null);
+  const isFormValid =
+    formData.nome.trim() !== "" &&
+    formData.email.trim() !== "" &&
+    formData.telefone.trim() !== "" &&
+    formData.cidade.trim() !== "" &&
+    formData.tipoLoja !== "";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "telefone") {
+      setFormData((prev) => ({ ...prev, telefone: formatPhone(value) }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Future: send to backend
-    console.log("Form submitted:", formData, "Canal:", canalEscolhido);
+    setIsLoading(true);
+
+    try {
+      const success = await sendToRDStation(formData);
+      if (success) {
+        // Scroll to channel section
+        document.getElementById("canais")?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Ocorreu um erro",
+          description: "Tente novamente ou entre em contato pelo WhatsApp.",
+        });
+      }
+    } catch {
+      toast({
+        variant: "destructive",
+        title: "Ocorreu um erro",
+        description: "Tente novamente ou entre em contato pelo WhatsApp.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
-
-  const estados = [
-    "AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG",
-    "PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"
-  ];
-
-  const canais = [
-    {
-      id: "whatsapp",
-      icon: MessageCircle,
-      title: "WhatsApp",
-      desc: "Resposta em até 2h",
-    },
-    {
-      id: "telefone",
-      icon: Phone,
-      title: "Telefone",
-      desc: "(32) 3729-0909",
-    },
-    {
-      id: "email",
-      icon: Mail,
-      title: "E-mail",
-      desc: "faleconosco@veggi.com.br",
-    },
-  ];
-
-  const blocos = [
-    {
-      icon: Package,
-      title: "Pedido mínimo acessível",
-      desc: "Comece com um mix estratégico sem precisar de grande investimento inicial.",
-    },
-    {
-      icon: Shield,
-      title: "Marca consolidada",
-      desc: "45 anos de tradição e qualidade reconhecida em todo o Brasil.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Alta giro de estoque",
-      desc: "Sleepwear é recompra garantida — seus clientes voltam sempre.",
-    },
-    {
-      icon: Heart,
-      title: "Suporte dedicado",
-      desc: "Representante comercial exclusivo e materiais de sell-out inclusos.",
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -99,137 +121,131 @@ const QueroRevender = () => {
         </section>
 
         {/* Formulário de Cadastro */}
-        <section className="py-20 md:py-28" style={{ backgroundColor: "hsl(var(--veggi-section))" }}>
+        <section className="py-20 bg-background">
           <div className="container mx-auto px-6 lg:px-16">
-            <div className="max-w-2xl mx-auto">
-              <h2 className="font-heading text-[28px] md:text-[36px] font-bold text-foreground text-center mb-3">
-                Preencha seus dados
+            <div className="max-w-[560px] mx-auto bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-8 md:p-12">
+              {/* Icon */}
+              <div className="flex justify-center mb-5">
+                <Store className="text-primary" size={32} strokeWidth={1.5} />
+              </div>
+
+              {/* Title */}
+              <h2 className="font-heading text-[28px] font-bold text-foreground text-center mb-2">
+                Seus dados
               </h2>
-              <p className="text-center font-sans text-muted-foreground mb-12">
-                Nosso time comercial entrará em contato em até 24h úteis.
+              <p className="text-center font-sans text-[15px] text-muted-foreground mb-8">
+                Preencha para personalizarmos seu atendimento
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block font-label text-[12px] tracking-[0.1em] uppercase text-foreground mb-2">
-                      Nome completo *
-                    </label>
-                    <input
-                      type="text"
-                      name="nome"
-                      required
-                      value={formData.nome}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded font-sans text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
-                      placeholder="Seu nome"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-label text-[12px] tracking-[0.1em] uppercase text-foreground mb-2">
-                      Nome da loja *
-                    </label>
-                    <input
-                      type="text"
-                      name="loja"
-                      required
-                      value={formData.loja}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded font-sans text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
-                      placeholder="Nome fantasia"
-                    />
-                  </div>
-                </div>
-
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Nome */}
                 <div>
-                  <label className="block font-label text-[12px] tracking-[0.1em] uppercase text-foreground mb-2">
-                    CNPJ *
-                  </label>
+                  <label className={labelClass}>Nome completo</label>
                   <input
                     type="text"
-                    name="cnpj"
+                    name="nome"
                     required
-                    value={formData.cnpj}
+                    value={formData.nome}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-background border border-border rounded font-sans text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
-                    placeholder="00.000.000/0000-00"
+                    className={inputClass}
+                    placeholder="Seu nome"
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block font-label text-[12px] tracking-[0.1em] uppercase text-foreground mb-2">
-                      Cidade *
-                    </label>
-                    <input
-                      type="text"
-                      name="cidade"
-                      required
-                      value={formData.cidade}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded font-sans text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
-                      placeholder="Sua cidade"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-label text-[12px] tracking-[0.1em] uppercase text-foreground mb-2">
-                      Estado *
-                    </label>
-                    <select
-                      name="estado"
-                      required
-                      value={formData.estado}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded font-sans text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
-                    >
-                      <option value="">Selecione</option>
-                      {estados.map((uf) => (
-                        <option key={uf} value={uf}>{uf}</option>
-                      ))}
-                    </select>
-                  </div>
+                {/* Email */}
+                <div>
+                  <label className={labelClass}>Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={inputClass}
+                    placeholder="seu@email.com"
+                  />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block font-label text-[12px] tracking-[0.1em] uppercase text-foreground mb-2">
-                      WhatsApp *
-                    </label>
-                    <input
-                      type="tel"
-                      name="whatsapp"
-                      required
-                      value={formData.whatsapp}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded font-sans text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
-                      placeholder="(00) 00000-0000"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-label text-[12px] tracking-[0.1em] uppercase text-foreground mb-2">
-                      E-mail *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded font-sans text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
-                      placeholder="seu@email.com"
-                    />
-                  </div>
+                {/* Telefone */}
+                <div>
+                  <label className={labelClass}>Telefone / WhatsApp</label>
+                  <input
+                    type="tel"
+                    name="telefone"
+                    required
+                    value={formData.telefone}
+                    onChange={handleChange}
+                    className={inputClass}
+                    placeholder="(00) 00000-0000"
+                  />
                 </div>
 
+                {/* Cidade / Estado */}
+                <div>
+                  <label className={labelClass}>Cidade / Estado</label>
+                  <input
+                    type="text"
+                    name="cidade"
+                    required
+                    value={formData.cidade}
+                    onChange={handleChange}
+                    className={inputClass}
+                    placeholder="Ex: Uberaba - MG"
+                  />
+                </div>
+
+                {/* Tipo de loja */}
+                <div>
+                  <label className={labelClass}>Tipo de loja</label>
+                  <select
+                    name="tipoLoja"
+                    required
+                    value={formData.tipoLoja}
+                    onChange={handleChange}
+                    className={inputClass}
+                  >
+                    <option value="">Selecione...</option>
+                    {tipoLojaOptions.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Como conheceu */}
+                <div>
+                  <label className={labelClass}>Como conheceu a Veggi?</label>
+                  <select
+                    name="comoConheceu"
+                    value={formData.comoConheceu}
+                    onChange={handleChange}
+                    className={inputClass}
+                  >
+                    <option value="">Selecione...</option>
+                    {comoConheceuOptions.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full mt-4 py-4 bg-primary text-primary-foreground font-label font-semibold text-sm tracking-[0.1em] uppercase rounded transition-all duration-300 hover:opacity-90"
+                  disabled={!isFormValid || isLoading}
+                  className="w-full mt-2 py-3.5 bg-primary text-primary-foreground font-label font-semibold text-[14px] tracking-[0.1em] uppercase rounded-lg transition-all duration-300 hover:bg-[#5a1e22] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  Enviar cadastro
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="animate-spin" size={18} />
+                      ENVIANDO...
+                    </>
+                  ) : (
+                    "CONTINUAR"
+                  )}
                 </button>
 
-                <p className="text-center text-xs font-sans text-muted-foreground">
-                  Venda exclusiva para lojistas multimarcas com CNPJ ativo
+                {/* Privacy */}
+                <p className="text-center text-[12px] font-sans text-muted-foreground pt-1">
+                  Seus dados estão seguros. Não compartilhamos com terceiros.
                 </p>
               </form>
             </div>
@@ -237,7 +253,7 @@ const QueroRevender = () => {
         </section>
 
         {/* Escolha do Canal */}
-        <section className="py-20 md:py-28 bg-background">
+        <section id="canais" className="py-20 md:py-28" style={{ backgroundColor: "hsl(var(--veggi-section))" }}>
           <div className="container mx-auto px-6 lg:px-16 text-center">
             <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-4">
               Prefere outro canal?
@@ -275,7 +291,7 @@ const QueroRevender = () => {
         </section>
 
         {/* Blocos de Valor */}
-        <section className="py-20 md:py-28" style={{ backgroundColor: "hsl(var(--veggi-section))" }}>
+        <section className="py-20 md:py-28 bg-background">
           <div className="container mx-auto px-6 lg:px-16">
             <div className="text-center mb-14">
               <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-4">
