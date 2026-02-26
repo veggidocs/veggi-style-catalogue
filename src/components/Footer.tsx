@@ -32,9 +32,14 @@ const Footer = () => {
               Para Lojistas
             </h4>
             <nav className="flex flex-col gap-3">
-              {["Quero revender", "Portal do cliente", "Catálogos digitais", "Política comercial"].map((link) => (
-                <a key={link} href="#" className="font-sans text-sm text-white/70 hover:text-white transition-colors">
-                  {link}
+              {[
+                { label: "Quero revender", href: "/quero-revender" },
+                { label: "Portal do cliente", href: "#" },
+                { label: "Catálogos digitais", href: "#" },
+                { label: "Política comercial", href: "#" },
+              ].map((link) => (
+                <a key={link.label} href={link.href} className="font-sans text-sm text-white/70 hover:text-white transition-colors">
+                  {link.label}
                 </a>
               ))}
             </nav>
