@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2, ChevronDown } from "lucide-react";
+import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2, ChevronDown, Headset, PhoneCall, CheckCircle } from "lucide-react";
 import heroImage from "@/assets/hero-sleepwear.jpg";
 import { sendToRDStation } from "@/services/rdstation";
 import { formatPhone } from "@/utils/formatPhone";
@@ -25,11 +25,6 @@ const comoConheceuOptions = [
   "Outro",
 ];
 
-const canais = [
-  { id: "whatsapp", icon: MessageCircle, title: "WhatsApp", desc: "Resposta em até 2h" },
-  { id: "telefone", icon: Phone, title: "Telefone", desc: "(32) 3729-0909" },
-  { id: "email", icon: Mail, title: "E-mail", desc: "faleconosco@veggi.com.br" },
-];
 
 const blocos = [
   { icon: Package, title: "Pedido mínimo acessível", desc: "Comece com um mix estratégico sem precisar de grande investimento inicial." },
@@ -46,7 +41,7 @@ const labelClass = "block font-label font-medium text-[13px] text-foreground mb-
 const QueroRevender = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
-  const [canalEscolhido, setCanalEscolhido] = useState<string | null>(null);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -79,8 +74,10 @@ const QueroRevender = () => {
     try {
       const success = await sendToRDStation(formData);
       if (success) {
-        // Scroll to channel section
-        document.getElementById("canais")?.scrollIntoView({ behavior: "smooth" });
+        setFormSubmitted(true);
+        setTimeout(() => {
+          document.getElementById("canais")?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
       } else {
         toast({
           variant: "destructive",
@@ -273,43 +270,94 @@ const QueroRevender = () => {
           </div>
         </section>
 
-        {/* Escolha do Canal */}
-        <section id="canais" className="py-20 md:py-28" style={{ backgroundColor: "hsl(var(--veggi-section))" }}>
-          <div className="container mx-auto px-6 lg:px-16 text-center">
-            <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-4">
-              Prefere outro canal?
-            </p>
-            <h2 className="font-heading text-[28px] md:text-[36px] font-bold text-foreground mb-14">
-              Fale com nosso time comercial
-            </h2>
+        {/* Escolha do Canal — aparece após envio */}
+        {formSubmitted && (
+          <section
+            id="canais"
+            className="py-20 animate-fade-in"
+            style={{ backgroundColor: "hsl(var(--veggi-section))" }}
+          >
+            <div className="container mx-auto px-6 lg:px-16">
+              {/* Header */}
+              <div className="text-center mb-14">
+                <h2 className="font-heading text-[32px] font-bold text-foreground mb-4">
+                  Como prefere ser atendido?
+                </h2>
+                <p className="font-sans text-base text-muted-foreground flex items-center justify-center gap-2">
+                  <CheckCircle className="text-green-500 shrink-0" size={18} strokeWidth={2} />
+                  <span>
+                    <strong className="text-green-600">Dados recebidos!</strong> Agora escolha o canal mais conveniente para você.
+                  </span>
+                </p>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              {canais.map((canal) => (
-                <button
-                  key={canal.id}
-                  onClick={() => setCanalEscolhido(canal.id)}
-                  className={`p-8 rounded-lg border transition-all duration-300 text-center group ${
-                    canalEscolhido === canal.id
-                      ? "border-accent bg-accent/5"
-                      : "border-border hover:border-accent/40"
-                  }`}
-                >
-                  <canal.icon
-                    className={`mx-auto mb-4 transition-colors ${
-                      canalEscolhido === canal.id ? "text-accent" : "text-muted-foreground group-hover:text-accent"
-                    }`}
-                    size={28}
-                    strokeWidth={1.5}
-                  />
-                  <h3 className="font-label text-base font-semibold text-foreground normal-case tracking-normal mb-1">
-                    {canal.title}
+              {/* Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                {/* Card 1 — IA de Voz */}
+                <div className="relative bg-white rounded-xl p-8 border border-border shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+                  <span className="absolute top-4 right-4 bg-accent text-white text-[10px] font-label font-semibold uppercase px-2 py-0.5 rounded">
+                    NOVO
+                  </span>
+                  <Headset className="text-primary mb-5" size={40} strokeWidth={1.5} />
+                  <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
+                    Atendente Virtual
                   </h3>
-                  <p className="text-sm font-sans text-muted-foreground">{canal.desc}</p>
-                </button>
-              ))}
+                  <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3">
+                    Fale agora por voz com nossa IA
+                  </p>
+                  <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
+                    Tire dúvidas sobre linhas, investimento e condições comerciais. Atendimento imediato, 24h.
+                  </p>
+                  <a
+                    href="#"
+                    className="block w-full text-center py-3 bg-primary text-primary-foreground font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-[#5a1e22]"
+                  >
+                    FALAR AGORA
+                  </a>
+                </div>
+
+                {/* Card 2 — WhatsApp */}
+                <div className="relative bg-white rounded-xl p-8 border border-border shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+                  <MessageCircle className="text-[#25D366] mb-5" size={40} strokeWidth={1.5} />
+                  <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
+                    WhatsApp Comercial
+                  </h3>
+                  <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3">
+                    Converse por texto com nosso time
+                  </p>
+                  <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
+                    Envie mensagem e receba atendimento personalizado no seu WhatsApp.
+                  </p>
+                  <a
+                    href="https://wa.me/553237290909?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20revender%20Veggi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center py-3 bg-[#25D366] text-white font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-[#1fb855]"
+                  >
+                    CHAMAR NO WHATSAPP
+                  </a>
+                </div>
+
+                {/* Card 3 — Aguardar Contato */}
+                <div className="relative bg-white rounded-xl p-8 border border-border shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+                  <PhoneCall className="text-muted-foreground mb-5" size={40} strokeWidth={1.5} />
+                  <h3 className="font-heading text-[20px] font-bold text-foreground mb-1 normal-case">
+                    Receber Ligação
+                  </h3>
+                  <p className="font-label font-medium text-[13px] text-accent tracking-[0.1em] uppercase mb-3">
+                    Nosso representante liga para você
+                  </p>
+                  <p className="font-sans text-[14px] text-muted-foreground leading-relaxed mb-6">
+                    Encaminhamos seus dados ao representante da sua região. Retorno em até 24h úteis.
+                  </p>
+                  <button className="block w-full text-center py-3 bg-white border border-primary text-primary font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-primary/5">
+                    AGUARDAR CONTATO
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Blocos de Valor */}
         <section className="py-20 md:py-28 bg-background">
