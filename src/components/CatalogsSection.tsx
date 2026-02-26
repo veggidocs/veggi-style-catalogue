@@ -17,7 +17,7 @@ const CatalogsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
           <p className="font-label text-[12px] tracking-[0.2em] uppercase text-accent mb-4">
-            Coleções 2025
+            Últimas Coleções
           </p>
           <h2 className="font-heading text-4xl md:text-[48px] font-bold text-foreground leading-tight">
             Catálogos
