@@ -88,7 +88,9 @@ const CTASection = () => {
               ))}
             </ul>
             <a
-              href="#"
+              href="https://veggi.com.br/portal"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full mt-6 text-center border border-white text-white bg-transparent font-label font-semibold text-sm py-3 px-7 rounded hover:bg-white/10 transition-colors duration-300 normal-case tracking-normal"
             >
               FAZER PEDIDO
