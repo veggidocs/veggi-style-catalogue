@@ -1,5 +1,5 @@
 import { Store, Package, Check } from "lucide-react";
-import heroImage from "@/assets/hero-sleepwear.jpg";
+import ctaBg from "@/assets/cta-bg-new.jpg";
 
 const newClientChecks = [
   "Cadastro rápido e sem burocracia",
@@ -22,9 +22,10 @@ const CTASection = () => {
       {/* Background image + overlay */}
       <div className="absolute inset-0">
         <img
-          src={heroImage}
+          src={ctaBg}
           alt=""
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-[center_30%]"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-black/70" />
       </div>

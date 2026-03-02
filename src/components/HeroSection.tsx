@@ -1,4 +1,4 @@
-import heroImage from "@/assets/hero-sleepwear.jpg";
+import heroImage from "@/assets/hero-veggi.png";
 
 const HeroSection = () => {
   return (
@@ -7,7 +7,8 @@ const HeroSection = () => {
         <img
           src={heroImage}
           alt="Veggi Sleepwear"
-          className="w-full h-full object-cover scale-105"
+          className="w-full h-full object-cover object-center scale-105"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
       </div>

@@ -1,7 +1,7 @@
-import catalogSleepwear from "@/assets/catalog-sleepwear.jpg";
-import catalogSonhoFantasia from "@/assets/catalog-sonho-fantasia.jpg";
-import catalogTurmaBia from "@/assets/catalog-turma-bia.jpg";
-import catalogLicenciados from "@/assets/catalog-licenciados.jpg";
+import catalogSleepwear from "@/assets/catalog-sleepwear-new.jpg";
+import catalogSonhoFantasia from "@/assets/catalog-sonho-new.jpg";
+import catalogTurmaBia from "@/assets/catalog-turmabia-new.jpg";
+import catalogLicenciados from "@/assets/catalog-licenciados-new.jpg";
 
 const catalogs = [
   { id: 1, name: "Sleepwear", image: catalogSleepwear },
@@ -34,7 +34,10 @@ const CatalogsSection = () => {
               <img
                 src={catalog.image}
                 alt={catalog.name}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] ${
+                  catalog.name === "Turma da Bia" ? "object-center" : "object-[center_top]"
+                }`}
+                loading="lazy"
               />
               
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
