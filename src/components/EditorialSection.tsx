@@ -1,6 +1,6 @@
-import editorial1 from "@/assets/editorial-1.jpg";
-import editorial2 from "@/assets/editorial-2.jpg";
-import editorial3 from "@/assets/editorial-3-licenciados.jpg";
+import editorial1 from "@/assets/editorial-sleepwear-new.png";
+import editorial2 from "@/assets/editorial-sonho-new.jpg";
+import editorial3 from "@/assets/editorial-licenciados-new.png";
 
 const EditorialSection = () => {
   return (
@@ -10,9 +10,10 @@ const EditorialSection = () => {
         <img
           src={editorial1}
           alt="Sleepwear Collection"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-l from-background/90 via-background/40 to-transparent" />
+           className="w-full h-full object-cover object-center"
+           loading="lazy"
+         />
+         <div className="absolute inset-0 bg-gradient-to-l from-background/90 via-background/40 to-transparent" />
         
         <div className="absolute top-1/2 right-8 md:right-16 lg:right-24 -translate-y-1/2 text-right">
           <p className="font-label text-[12px] tracking-[0.2em] uppercase text-muted-foreground mb-4">
@@ -32,7 +33,8 @@ const EditorialSection = () => {
           <img
             src={editorial2}
             alt="Mãe e filha em pijamas"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_30%]"
+            loading="lazy"
           />
         </div>
         
@@ -75,7 +77,8 @@ const EditorialSection = () => {
           <img
             src={editorial3}
             alt="Criança com pijama de personagem"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_25%]"
+            loading="lazy"
           />
         </div>
       </div>

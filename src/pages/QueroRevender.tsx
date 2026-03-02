@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2, ChevronDown, Headset, PhoneCall, CheckCircle, PackageCheck, Award, ShieldCheck, Instagram } from "lucide-react";
-import heroImage from "@/assets/hero-sleepwear.jpg";
+import heroImage from "@/assets/hero-veggi.png";
 import { sendToRDStation } from "@/services/rdstation";
 import { formatPhone } from "@/utils/formatPhone";
 import { useToast } from "@/hooks/use-toast";
@@ -100,7 +100,7 @@ const QueroRevender = () => {
             <img
               src={heroImage}
               alt="Loja multimarcas"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-[rgba(45,45,45,0.7)]" />
           </div>

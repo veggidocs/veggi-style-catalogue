@@ -1,4 +1,4 @@
-import giftPackaging from "@/assets/gift-packaging.jpg";
+import giftPackaging from "@/assets/packaging-new.jpg";
 
 const PackagingSection = () => {
   return (
@@ -9,7 +9,8 @@ const PackagingSection = () => {
           <img
             src={giftPackaging}
             alt="Embalagem premium Veggi"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_40%]"
+            loading="lazy"
           />
         </div>
 
