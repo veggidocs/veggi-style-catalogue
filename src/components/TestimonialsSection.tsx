@@ -24,9 +24,9 @@ const videoTestimonials = [
   },
   {
     id: 3,
-    name: "Chryssia",
-    store: "Boneca de Cheiro",
-    location: "Vicentinópolis, GO",
+    name: "Eliane",
+    store: "Led's Íntima",
+    location: "Goianésia, GO",
     quote: "Estou a 14 anos trabalhando com a Veggi e nesse tempo nós vimos o nosso crescimento acontecer. Hoje somos a loja que mais vende pijama em todo o grupo Led's.",
     videoSrc: "https://veggi.com.br/videos/depoimento_veggi_3.mp4",
     poster: poster3,
