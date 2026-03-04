@@ -1,4 +1,7 @@
 import { useState } from "react";
+import poster1 from "@/assets/poster-depoimento-1.png";
+import poster2 from "@/assets/poster-depoimento-2.png";
+import poster3 from "@/assets/poster-depoimento-3.png";
 
 const videoTestimonials = [
   {
@@ -8,6 +11,7 @@ const videoTestimonials = [
     location: "São Paulo, SP",
     quote: "Giro de 25 dias. Nunca tive com outra marca.",
     videoSrc: "https://veggi.com.br/videos/depoimento_veggi_1.mp4",
+    poster: poster1,
   },
   {
     id: 2,
@@ -16,6 +20,7 @@ const videoTestimonials = [
     location: "Belo Horizonte, MG",
     quote: "A marca que minha cliente já conhece e confia.",
     videoSrc: "https://veggi.com.br/videos/depoimento_veggi_2.mp4",
+    poster: poster2,
   },
   {
     id: 3,
@@ -24,6 +29,7 @@ const videoTestimonials = [
     location: "Curitiba, PR",
     quote: "Os licenciados vendem sozinhos. É só expor.",
     videoSrc: "https://veggi.com.br/videos/depoimento_veggi_3.mp4",
+    poster: poster3,
   },
 ];
 
@@ -73,26 +79,30 @@ const TestimonialsSection = () => {
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {videoTestimonials.map((testimonial) => (
               <div key={testimonial.id} className="group">
-                {/* Video Player */}
-                <div className="relative aspect-[9/16] overflow-hidden rounded-xl bg-neutral-900 mb-6">
+                {/* Video Player with overlay */}
+                <div className="relative aspect-[9/16] overflow-hidden rounded-xl bg-neutral-900">
                   <video
                     controls
-                    preload="metadata"
+                    preload="none"
                     playsInline
+                    poster={testimonial.poster}
                     className="w-full h-full object-cover rounded-xl"
                     src={testimonial.videoSrc}
                   />
-                </div>
-
-                {/* Info */}
-                <div>
-                  <h4 className="font-label text-base font-semibold text-foreground normal-case tracking-normal">{testimonial.name}</h4>
-                  <p className="text-sm font-sans text-muted-foreground">
-                    {testimonial.store} · {testimonial.location}
-                  </p>
-                  <p className="text-sm font-sans text-muted-foreground italic mt-1">
-                    "{testimonial.quote}"
-                  </p>
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none rounded-xl" />
+                  {/* Text over gradient */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 pointer-events-none z-10">
+                    <p className="text-sm font-sans text-white/90 italic mb-3">
+                      "{testimonial.quote}"
+                    </p>
+                    <h4 className="font-label text-base font-semibold text-white normal-case tracking-normal">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-sm font-sans text-white/70">
+                      {testimonial.store} · {testimonial.location}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
