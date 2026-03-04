@@ -12,12 +12,12 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  const navLinks: { href: string; label: string; external?: boolean }[] = [
     { href: "#catalogos", label: "Catálogos" },
     { href: "#linhas", label: "Linhas" },
     { href: "#roi", label: "Calculadora" },
     { href: "#depoimentos", label: "Depoimentos" },
-    { href: "https://veggi.com.br/portal", label: "Área do cliente", external: true },
+    { href: "/ja-sou-cliente", label: "Já sou cliente" },
   ];
 
   return (

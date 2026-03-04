@@ -7,6 +7,13 @@ interface RDStationFormData {
   instagram: string;
 }
 
+interface RDStationClienteFormData {
+  nome: string;
+  telefone: string;
+  email: string;
+  cnpj: string;
+}
+
 export const sendToRDStation = async (formData: RDStationFormData): Promise<boolean> => {
   const token = import.meta.env.VITE_RD_STATION_TOKEN;
 
@@ -26,6 +33,45 @@ export const sendToRDStation = async (formData: RDStationFormData): Promise<bool
       city: formData.cidade,
       cf_tipo_loja: formData.tipoLoja,
       cf_instagram: formData.instagram,
+      traffic_source: document.referrer || "direto",
+      created_at: new Date().toISOString(),
+    },
+  };
+
+  try {
+    const response = await fetch("https://api.rd.services/platform/events", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    return response.ok;
+  } catch (error) {
+    console.error("RD Station API error:", error);
+    return false;
+  }
+};
+
+export const sendClienteToRDStation = async (formData: RDStationClienteFormData): Promise<boolean> => {
+  const token = import.meta.env.VITE_RD_STATION_TOKEN;
+
+  if (!token) {
+    console.warn("RD Station token not configured — simulating success (dev mode)");
+    return true;
+  }
+
+  const payload = {
+    event_type: "CONVERSION",
+    event_family: "CDP",
+    payload: {
+      conversion_identifier: "lp-ja-sou-cliente-veggi",
+      name: formData.nome,
+      email: formData.email,
+      mobile_phone: formData.telefone,
+      cf_cnpj: formData.cnpj,
       traffic_source: document.referrer || "direto",
       created_at: new Date().toISOString(),
     },
