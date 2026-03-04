@@ -28,12 +28,12 @@ const EditorialSection = () => {
       </div>
 
       {/* 2. Sonho e Fantasia — Image Right, Text Left */}
-      <div className="grid lg:grid-cols-2 min-h-screen">
-        <div className="relative aspect-square lg:aspect-auto">
+      <div className="grid lg:grid-cols-2">
+        <div className="relative aspect-square overflow-hidden">
           <img
             src={editorial2}
             alt="Mãe e filha em pijamas"
-            className="w-full h-full object-cover object-[center_30%]"
+            className="w-full h-full object-cover object-[center_25%]"
             loading="lazy"
           />
         </div>
@@ -56,7 +56,7 @@ const EditorialSection = () => {
       </div>
 
       {/* 3. Licenciados Warner Bros — Text Left, Image Right (espelhado) */}
-      <div className="grid lg:grid-cols-2 min-h-screen">
+      <div className="grid lg:grid-cols-2">
         <div className="flex items-center justify-center bg-secondary p-12 md:p-20 order-2 lg:order-1">
           <div className="max-w-md">
             <p className="font-label text-[12px] tracking-[0.2em] uppercase text-muted-foreground mb-6">
@@ -73,11 +73,11 @@ const EditorialSection = () => {
           </div>
         </div>
 
-        <div className="relative aspect-square lg:aspect-auto order-1 lg:order-2">
+        <div className="relative aspect-square overflow-hidden order-1 lg:order-2">
           <img
             src={editorial3}
             alt="Criança com pijama de personagem"
-            className="w-full h-full object-cover object-[center_25%]"
+            className="w-full h-full object-cover object-[center_20%]"
             loading="lazy"
           />
         </div>

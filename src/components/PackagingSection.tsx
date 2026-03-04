@@ -3,13 +3,13 @@ import giftPackaging from "@/assets/packaging-new.jpg";
 const PackagingSection = () => {
   return (
     <section className="bg-secondary">
-      <div className="grid lg:grid-cols-2 min-h-[600px]">
+      <div className="grid lg:grid-cols-2">
         {/* Image */}
-        <div className="relative aspect-square lg:aspect-auto">
+        <div className="relative aspect-square overflow-hidden">
           <img
             src={giftPackaging}
             alt="Embalagem premium Veggi"
-            className="w-full h-full object-cover object-[center_70%]"
+            className="w-full h-full object-cover object-[center_50%]"
             loading="lazy"
           />
         </div>
