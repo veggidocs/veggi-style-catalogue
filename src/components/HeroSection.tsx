@@ -49,7 +49,7 @@ const HeroSection = () => {
                 Quero revender
               </a>
               <a
-                href="#cliente"
+                href="/ja-sou-cliente"
                 className="inline-flex items-center justify-center px-8 py-4 border border-white/50 text-white font-label text-[13px] tracking-[0.05em] uppercase font-semibold rounded transition-all duration-300 hover:bg-white/10"
               >
                 Já sou cliente
