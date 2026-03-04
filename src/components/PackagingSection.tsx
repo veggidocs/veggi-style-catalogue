@@ -5,11 +5,11 @@ const PackagingSection = () => {
     <section className="bg-secondary">
       <div className="grid lg:grid-cols-2 min-h-[600px]">
         {/* Image */}
-        <div className="relative aspect-square lg:aspect-auto overflow-hidden">
+        <div className="relative aspect-square lg:aspect-auto">
           <img
             src={giftPackaging}
             alt="Embalagem premium Veggi"
-            className="w-full h-full object-cover object-[center_60%]"
+            className="w-full h-full object-cover object-[center_40%]"
             loading="lazy"
           />
         </div>
