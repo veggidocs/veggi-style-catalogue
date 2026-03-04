@@ -8,12 +8,11 @@ import { formatPhone } from "@/utils/formatPhone";
 import { useToast } from "@/hooks/use-toast";
 
 const tipoLojaOptions = [
-  "Multimarcas",
-  "Moda infantil",
-  "Moda feminina",
-  "Lingerie e sleepwear",
-  "Presentes e enxoval",
-  "Outra",
+  "Moda Feminina",
+  "Moda Infantil",
+  "Moda Íntima",
+  "Presentes",
+  "Outros",
 ];
 
 
@@ -206,7 +205,7 @@ const QueroRevender = () => {
 
                 {/* Tipo de loja */}
                 <div>
-                  <label className={labelClass}>Tipo de loja</label>
+                  <label className={labelClass}>Segmento da loja</label>
                   <select
                     name="tipoLoja"
                     required
