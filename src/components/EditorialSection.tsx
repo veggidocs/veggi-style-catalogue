@@ -77,7 +77,7 @@ const EditorialSection = () => {
           <img
             src={editorial3}
             alt="Criança com pijama de personagem"
-            className="w-full h-full object-cover object-[center_40%]"
+            className="w-full h-full object-cover object-[center_55%]"
             loading="lazy"
           />
         </div>
