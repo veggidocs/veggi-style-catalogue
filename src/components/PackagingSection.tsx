@@ -9,7 +9,7 @@ const PackagingSection = () => {
           <img
             src={giftPackaging}
             alt="Embalagem premium Veggi"
-            className="w-full h-full object-cover object-[center_65%]"
+            className="w-full h-full object-cover object-[center_50%]"
             loading="lazy"
           />
         </div>
