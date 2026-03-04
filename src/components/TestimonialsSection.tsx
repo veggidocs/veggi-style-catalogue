@@ -119,16 +119,16 @@ const TestimonialsSection = () => {
             {textTestimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="relative p-8 md:p-10 bg-neutral-50 group hover:bg-neutral-100 transition-colors duration-500"
+                className="relative p-8 md:p-10 bg-neutral-50 group hover:bg-neutral-100 transition-colors duration-500 flex flex-col"
               >
                 <div className="absolute top-6 left-8 text-6xl font-serif text-border leading-none">
                   "
                 </div>
-                <blockquote className="relative z-10 pt-8">
-                  <p className="text-base font-sans text-foreground leading-relaxed mb-8 italic">
+                <blockquote className="relative z-10 pt-8 flex flex-col flex-1">
+                  <p className="text-base font-sans text-foreground leading-relaxed mb-8 italic flex-1">
                     {testimonial.quote}
                   </p>
-                  <footer className="border-t border-neutral-200 pt-6">
+                  <footer className="border-t border-neutral-200 pt-6 mt-auto">
                     <p className="font-label text-base font-semibold text-foreground normal-case tracking-normal">{testimonial.name}</p>
                     <p className="text-sm font-sans text-muted-foreground mb-2">
                       {testimonial.store} · {testimonial.location}
