@@ -1,7 +1,4 @@
 import { useState } from "react";
-import testimonialVideo1 from "@/assets/testimonial-video-1.jpg";
-import testimonialVideo2 from "@/assets/testimonial-video-2.jpg";
-import testimonialVideo3 from "@/assets/testimonial-video-3.jpg";
 
 const videoTestimonials = [
   {
@@ -10,7 +7,7 @@ const videoTestimonials = [
     store: "Boutique Flor de Lis",
     location: "São Paulo, SP",
     quote: "Giro de 25 dias. Nunca tive com outra marca.",
-    image: testimonialVideo1,
+    videoSrc: "https://veggi.com.br/videos/depoimento_veggi_1.mp4",
   },
   {
     id: 2,
@@ -18,7 +15,7 @@ const videoTestimonials = [
     store: "Loja Amor de Mãe",
     location: "Belo Horizonte, MG",
     quote: "A marca que minha cliente já conhece e confia.",
-    image: testimonialVideo2,
+    videoSrc: "https://veggi.com.br/videos/depoimento_veggi_2.mp4",
   },
   {
     id: 3,
@@ -26,7 +23,7 @@ const videoTestimonials = [
     store: "Kids & Dreams",
     location: "Curitiba, PR",
     quote: "Os licenciados vendem sozinhos. É só expor.",
-    image: testimonialVideo3,
+    videoSrc: "https://veggi.com.br/videos/depoimento_veggi_3.mp4",
   },
 ];
 
@@ -58,8 +55,6 @@ const textTestimonials = [
 ];
 
 const TestimonialsSection = () => {
-  const [activeVideo, setActiveVideo] = useState<number | null>(null);
-
   return (
     <section className="py-24 md:py-32 bg-white">
       <div className="container mx-auto px-6 lg:px-16">
@@ -77,41 +72,16 @@ const TestimonialsSection = () => {
         <div className="mb-24 md:mb-32">
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {videoTestimonials.map((testimonial) => (
-              <div
-                key={testimonial.id}
-                className="group cursor-pointer"
-                onClick={() => setActiveVideo(testimonial.id)}
-              >
-                {/* Video Thumbnail */}
-                <div className="relative aspect-[3/4] overflow-hidden mb-6">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              <div key={testimonial.id} className="group">
+                {/* Video Player */}
+                <div className="relative aspect-[9/16] overflow-hidden rounded-xl bg-neutral-900 mb-6">
+                  <video
+                    controls
+                    preload="metadata"
+                    playsInline
+                    className="w-full h-full object-cover rounded-xl"
+                    src={testimonial.videoSrc}
                   />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
-                  
-                  {/* Play Button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                      <svg
-                        className="w-6 h-6 md:w-8 md:h-8 text-neutral-900 ml-1"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* Quote Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <p className="text-lg md:text-xl font-heading font-bold text-white italic">
-                      "{testimonial.quote}"
-                    </p>
-                  </div>
                 </div>
 
                 {/* Info */}
@@ -119,6 +89,9 @@ const TestimonialsSection = () => {
                   <h4 className="font-label text-base font-semibold text-foreground normal-case tracking-normal">{testimonial.name}</h4>
                   <p className="text-sm font-sans text-muted-foreground">
                     {testimonial.store} · {testimonial.location}
+                  </p>
+                  <p className="text-sm font-sans text-muted-foreground italic mt-1">
+                    "{testimonial.quote}"
                   </p>
                 </div>
               </div>
@@ -138,18 +111,13 @@ const TestimonialsSection = () => {
                 key={testimonial.id}
                 className="relative p-8 md:p-10 bg-neutral-50 group hover:bg-neutral-100 transition-colors duration-500"
               >
-                {/* Quote Mark */}
                 <div className="absolute top-6 left-8 text-6xl font-serif text-border leading-none">
                   "
                 </div>
-
-                {/* Quote */}
                 <blockquote className="relative z-10 pt-8">
                   <p className="text-base font-sans text-foreground leading-relaxed mb-8 italic">
                     {testimonial.quote}
                   </p>
-
-                  {/* Author */}
                   <footer className="border-t border-neutral-200 pt-6">
                     <p className="font-label text-base font-semibold text-foreground normal-case tracking-normal">{testimonial.name}</p>
                     <p className="text-sm font-sans text-muted-foreground mb-2">
@@ -172,44 +140,6 @@ const TestimonialsSection = () => {
           </a>
         </div>
       </div>
-
-      {/* Video Modal */}
-      {activeVideo && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-6"
-          onClick={() => setActiveVideo(null)}
-        >
-          <div className="relative w-full max-w-4xl aspect-video bg-neutral-900 flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-10 h-10 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <p className="text-white/60 text-lg">
-                Vídeo em breve
-              </p>
-              <p className="text-sm text-white/40 mt-2">
-                Clique para fechar
-              </p>
-            </div>
-          </div>
-          
-          {/* Close Button */}
-          <button
-            className="absolute top-8 right-8 text-white hover:text-white/70 transition-colors"
-            onClick={() => setActiveVideo(null)}
-          >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      )}
     </section>
   );
 };
