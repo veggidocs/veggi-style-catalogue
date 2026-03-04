@@ -124,8 +124,8 @@ const TestimonialsSection = () => {
                 <div className="absolute top-6 left-8 text-6xl font-serif text-border leading-none">
                   "
                 </div>
-                <blockquote className="relative z-10 pt-8 flex flex-col flex-1 justify-between">
-                  <p className="text-base font-sans text-foreground leading-relaxed mb-8 italic">
+                <blockquote className="relative z-10 pt-8 flex flex-col flex-1">
+                  <p className="text-base font-sans text-foreground leading-relaxed mb-8 italic flex-1">
                     {testimonial.quote}
                   </p>
                   <footer className="border-t border-neutral-200 pt-6 mt-auto">
