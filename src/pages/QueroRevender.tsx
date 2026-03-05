@@ -15,6 +15,13 @@ const tipoLojaOptions = [
   "Outros",
 ];
 
+const tipoRevendaOptions = [
+  "Loja física",
+  "Loja virtual / E-commerce",
+  "Venda Informal (redes sociais, etc)",
+  "Quero começar a revender",
+];
+
 
 
 const valorCards = [
@@ -39,6 +46,7 @@ const QueroRevender = () => {
     telefone: "",
     cidade: "",
     tipoLoja: "",
+    tipoRevenda: "",
     instagram: "",
   });
 
@@ -47,7 +55,8 @@ const QueroRevender = () => {
     formData.email.trim() !== "" &&
     formData.telefone.trim() !== "" &&
     formData.cidade.trim() !== "" &&
-    formData.tipoLoja !== "";
+    formData.tipoLoja !== "" &&
+    formData.tipoRevenda !== "";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -205,7 +214,7 @@ const QueroRevender = () => {
 
                 {/* Tipo de loja */}
                 <div>
-                  <label className={labelClass}>Segmento da loja</label>
+                  <label className={labelClass}>Principal segmento da loja</label>
                   <select
                     name="tipoLoja"
                     required
@@ -215,6 +224,23 @@ const QueroRevender = () => {
                   >
                     <option value="">Selecione...</option>
                     {tipoLojaOptions.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Tipo de revenda */}
+                <div>
+                  <label className={labelClass}>Tipo de revenda</label>
+                  <select
+                    name="tipoRevenda"
+                    required
+                    value={formData.tipoRevenda}
+                    onChange={handleChange}
+                    className={inputClass}
+                  >
+                    <option value="">Selecione...</option>
+                    {tipoRevendaOptions.map((opt) => (
                       <option key={opt} value={opt}>{opt}</option>
                     ))}
                   </select>
