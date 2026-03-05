@@ -22,6 +22,10 @@ const tipoRevendaOptions = [
   "Quero começar a revender",
 ];
 
+const possuiCnpjOptions = [
+  "Sim",
+  "Não",
+];
 
 
 const valorCards = [
@@ -41,22 +45,26 @@ const QueroRevender = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    nome: "",
-    email: "",
-    telefone: "",
-    cidade: "",
-    tipoLoja: "",
-    tipoRevenda: "",
-    instagram: "",
-  });
+  nome: "",
+  email: "",
+  telefone: "",
+  cidade: "",
+  tipoLoja: "",
+  tipoRevenda: "",
+  instagram: "",
+  possuiCnpj: "",
+});
 
-  const isFormValid =
-    formData.nome.trim() !== "" &&
-    formData.email.trim() !== "" &&
-    formData.telefone.trim() !== "" &&
-    formData.cidade.trim() !== "" &&
-    formData.tipoLoja !== "" &&
-    formData.tipoRevenda !== "";
+const isPhoneValid = formData.telefone.replace(/\D/g, "").length >= 10;
+
+const isFormValid =
+  formData.nome.trim() !== "" &&
+  formData.email.trim() !== "" &&
+  isPhoneValid &&
+  formData.cidade.trim() !== "" &&
+  formData.tipoLoja !== "" &&
+  formData.tipoRevenda !== "" &&
+  formData.possuiCnpj !== "";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -191,6 +199,7 @@ const QueroRevender = () => {
                     type="tel"
                     name="telefone"
                     required
+                    minLength={14}
                     value={formData.telefone}
                     onChange={handleChange}
                     className={inputClass}
@@ -210,6 +219,24 @@ const QueroRevender = () => {
                     className={inputClass}
                     placeholder="Ex: Uberaba - MG"
                   />
+                </div>
+
+                {/* Possui CNPJ? */}
+                <div>
+                  <label className={labelClass}>Possui CNPJ?</label>
+                  <select
+                    name="possuiCnpj"
+                    required
+                    value={formData.possuiCnpj}
+                    onChange={handleChange}
+                    className={inputClass}
+                  >
+                  <option value="">Selecione...</option>
+
+                    {possuiCnpjOptions.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
                 </div>
 
                 {/* Tipo de loja */}

@@ -8,6 +8,7 @@ interface RDStationFormData {
   tipoLoja: string;
   tipoRevenda: string;
   instagram: string;
+  possuiCnpj: string; // novo campo
 }
 
 interface RDStationClienteFormData {
@@ -19,12 +20,28 @@ interface RDStationClienteFormData {
 
 const API_BASE = "https://api.grupoveggi.com.br";
 
+// 🔵 NOVO: captura UTMs da URL
+function getUTMs() {
+  const params = new URLSearchParams(window.location.search);
+
+  return {
+    utm_source: params.get("utm_source") || undefined,
+    utm_medium: params.get("utm_medium") || undefined,
+    utm_campaign: params.get("utm_campaign") || undefined,
+    utm_content: params.get("utm_content") || undefined,
+    utm_term: params.get("utm_term") || undefined,
+  };
+}
+
 async function postWorker(path: string, body: any): Promise<boolean> {
   try {
+    const utms = getUTMs();
+
     const response = await fetch(`${API_BASE}${path}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      // 🔵 adiciona UTMs sem alterar seu payload original
+      body: JSON.stringify({ ...body, ...utms }),
     });
 
     // opcional: ajudar debug
@@ -52,6 +69,7 @@ export const sendToRDStation = async (formData: RDStationFormData): Promise<bool
     cf_segmento_da_loja: formData.tipoLoja,
     cf_tipo_de_revenda_0: formData.tipoRevenda,
     cf_instagram_da_loja: formData.instagram,
+    cf_possui_cnpj: formData.possuiCnpj
 
     traffic_source: document.referrer || "direto",
     created_at: new Date().toISOString(),
