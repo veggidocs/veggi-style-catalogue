@@ -65,7 +65,7 @@ export const sendClienteToRDStation = async (formData: RDStationClienteFormData)
     email: formData.email,
     phone: formData.telefone,
 
-    // ✅ MAPEAMENTO (front -> RD)
+    // ✅ MAPEAMENTO RD (front -> RD)
     cf_cnpj: formData.cnpj,
 
     traffic_source: document.referrer || "direto",
