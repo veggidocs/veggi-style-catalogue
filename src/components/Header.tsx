@@ -13,8 +13,6 @@ const Header = () => {
   }, []);
 
   const navLinks: { href: string; label: string; external?: boolean }[] = [
-    { href: "#catalogos", label: "Catálogos" },
-    { href: "#linhas", label: "Linhas" },
     { href: "#roi", label: "Calculadora" },
     { href: "#depoimentos", label: "Depoimentos" },
     { href: "/ja-sou-cliente", label: "Já sou cliente" },
