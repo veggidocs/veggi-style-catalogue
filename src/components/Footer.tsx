@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -14,13 +14,13 @@ const Footer = () => {
               45 anos vestindo o conforto de milhares de lares brasileiros. Sleepwear de qualidade para toda a família.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-white/70 hover:text-white transition-colors">
+              <a href="https://www.instagram.com/useveggi" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
                 <Instagram size={24} />
               </a>
-              <a href="#" className="text-white/70 hover:text-white transition-colors">
-                <Facebook size={24} />
+              <a href="https://www.tiktok.com/@useveggi" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
               </a>
-              <a href="#" className="text-white/70 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/company/veggi/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
                 <Linkedin size={24} />
               </a>
             </div>
