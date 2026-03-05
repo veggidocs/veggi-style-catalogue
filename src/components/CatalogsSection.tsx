@@ -54,10 +54,10 @@ const CatalogsSection = () => {
         {/* Download Link */}
         <div className="text-center mt-10">
           <a
-            href="#"
+            href="/quero-revender"
             className="inline-flex items-center gap-2 font-label text-sm font-medium text-primary tracking-[0.05em] hover:text-accent transition-colors duration-300"
           >
-            Baixar todos os catálogos
+            Solicitar catálogo
             <span className="text-lg">→</span>
           </a>
         </div>
