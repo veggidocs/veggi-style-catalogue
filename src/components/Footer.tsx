@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Mail, MapPin } from "lucide-react";
+import { Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -53,6 +53,10 @@ const Footer = () => {
               <a href="mailto:faleconosco@veggi.com.br" className="flex items-center gap-3 font-sans text-sm text-white/70 hover:text-white transition-colors">
                 <Mail size={16} className="shrink-0" />
                 faleconosco@veggi.com.br
+              </a>
+              <a href="tel:+553237290909" className="flex items-center gap-3 font-sans text-sm text-white/70 hover:text-white transition-colors">
+                <Phone size={16} className="shrink-0" />
+                (32) 3729 - 0909
               </a>
               <span className="flex items-center gap-3 font-sans text-sm text-white/70">
                 <MapPin size={16} className="shrink-0" />
