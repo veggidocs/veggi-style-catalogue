@@ -61,6 +61,7 @@ async function postWorker(path: string, body: any): Promise<boolean> {
 export const sendToRDStation = async (formData: RDStationFormData): Promise<boolean> => {
   return postWorker("/convert/quero-revender", {
     name: formData.nome,
+    company_name: formData.nome, // ✅ empresa = nome
     email: formData.email,
     phone: formData.telefone,
     city: formData.cidade,
@@ -80,6 +81,7 @@ export const sendToRDStation = async (formData: RDStationFormData): Promise<bool
 export const sendClienteToRDStation = async (formData: RDStationClienteFormData): Promise<boolean> => {
   return postWorker("/convert/ja-sou-cliente", {
     name: formData.nome,
+    company_name: formData.nome, // ✅ empresa = nome
     email: formData.email,
     phone: formData.telefone,
 
