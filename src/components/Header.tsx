@@ -15,6 +15,7 @@ const Header = () => {
   const navLinks: { href: string; label: string; external?: boolean }[] = [
     { href: "#roi", label: "Calculadora" },
     { href: "#depoimentos", label: "Depoimentos" },
+    { href: "/faqs", label: "FAQs" },
     { href: "/ja-sou-cliente", label: "Já sou cliente" },
   ];
 
