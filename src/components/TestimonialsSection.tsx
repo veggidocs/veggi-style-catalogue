@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { Play } from "lucide-react";
 import poster1 from "@/assets/poster-depoimento-1.png";
 import poster2 from "@/assets/poster-depoimento-2.png";
 import poster3 from "@/assets/poster-depoimento-3.png";
@@ -60,6 +61,70 @@ const textTestimonials = [
   },
 ];
 
+const VideoCard = ({ testimonial }: { testimonial: typeof videoTestimonials[0] }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayPause = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play();
+      setIsPlaying(true);
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleVideoEnd = () => setIsPlaying(false);
+  const handlePause = () => setIsPlaying(false);
+  const handlePlay = () => setIsPlaying(true);
+
+  return (
+    <div className="group">
+      <div
+        className="relative aspect-[9/16] overflow-hidden rounded-xl bg-neutral-900 cursor-pointer"
+        onClick={handlePlayPause}
+      >
+        <video
+          ref={videoRef}
+          preload="none"
+          playsInline
+          poster={testimonial.poster}
+          className="w-full h-full object-cover rounded-xl"
+          src={testimonial.videoSrc}
+          onEnded={handleVideoEnd}
+          onPause={handlePause}
+          onPlay={handlePlay}
+        />
+        {/* Play button */}
+        {!isPlaying && (
+          <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+            <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 transition-transform group-hover:scale-110">
+              <Play className="w-7 h-7 text-white ml-1" fill="white" />
+            </div>
+          </div>
+        )}
+        {/* Gradient overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none rounded-xl transition-opacity duration-300 ${isPlaying ? 'opacity-0' : 'opacity-100'}`} />
+        {/* Text over gradient */}
+        <div className={`absolute bottom-0 left-0 right-0 p-6 pointer-events-none z-10 transition-opacity duration-300 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
+          <p className="text-sm font-sans text-white/90 italic mb-3">
+            "{testimonial.quote}"
+          </p>
+          <h4 className="font-label text-base font-semibold text-white normal-case tracking-normal">
+            {testimonial.name}
+          </h4>
+          <p className="text-sm font-sans text-white/70">
+            {testimonial.store} · {testimonial.location}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const TestimonialsSection = () => {
   return (
     <section className="py-24 md:py-32 bg-white">
@@ -78,33 +143,7 @@ const TestimonialsSection = () => {
         <div className="mb-24 md:mb-32">
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {videoTestimonials.map((testimonial) => (
-              <div key={testimonial.id} className="group">
-                {/* Video Player with overlay */}
-                <div className="relative aspect-[9/16] overflow-hidden rounded-xl bg-neutral-900">
-                  <video
-                    controls
-                    preload="none"
-                    playsInline
-                    poster={testimonial.poster}
-                    className="w-full h-full object-cover rounded-xl"
-                    src={testimonial.videoSrc}
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none rounded-xl" />
-                  {/* Text over gradient */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 pointer-events-none z-10">
-                    <p className="text-sm font-sans text-white/90 italic mb-3">
-                      "{testimonial.quote}"
-                    </p>
-                    <h4 className="font-label text-base font-semibold text-white normal-case tracking-normal">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm font-sans text-white/70">
-                      {testimonial.store} · {testimonial.location}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <VideoCard key={testimonial.id} testimonial={testimonial} />
             ))}
           </div>
         </div>
