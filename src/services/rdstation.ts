@@ -69,7 +69,7 @@ export const sendToRDStation = async (formData: RDStationFormData): Promise<bool
     cf_segmento_da_loja: formData.tipoLoja,
     cf_tipo_de_revenda_0: formData.tipoRevenda,
     cf_instagram_da_loja: formData.instagram,
-    cf_possui_cnpj: formData.possuiCnpj
+    cf_possui_cnpj: formData.possuiCnpj,
 
     traffic_source: document.referrer || "direto",
     created_at: new Date().toISOString(),
