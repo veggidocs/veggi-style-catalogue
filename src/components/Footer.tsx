@@ -35,7 +35,7 @@ const Footer = () => {
               {[
                 { label: "Quero revender", href: "/quero-revender" },
                 { label: "Já sou cliente", href: "/ja-sou-cliente" },
-                { label: "FAQs", href: "#" },
+                { label: "FAQs", href: "/faqs" },
               ].map((link) => (
                 <a key={link.label} href={link.href} className="font-sans text-sm text-white/70 hover:text-white transition-colors">
                   {link.label}
