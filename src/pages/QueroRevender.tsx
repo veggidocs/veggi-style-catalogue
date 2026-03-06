@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Store, MessageCircle, Phone, Mail, Package, Shield, TrendingUp, Heart, Loader2, ChevronDown, Headset, PhoneCall, CheckCircle, PackageCheck, Award, ShieldCheck, Instagram } from "lucide-react";
@@ -44,6 +44,7 @@ const QueroRevender = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [formData, setFormData] = useState({
   nome: "",
   email: "",
@@ -54,6 +55,26 @@ const QueroRevender = () => {
   instagram: "",
   possuiCnpj: "",
 });
+
+useEffect(() => {
+  (window as any).onTurnstileSuccess = (token: string) => {
+    setTurnstileToken(token);
+  };
+
+  (window as any).onTurnstileExpired = () => {
+    setTurnstileToken("");
+  };
+
+  (window as any).onTurnstileError = () => {
+    setTurnstileToken("");
+  };
+
+  return () => {
+    delete (window as any).onTurnstileSuccess;
+    delete (window as any).onTurnstileExpired;
+    delete (window as any).onTurnstileError;
+  };
+}, []);
 
 const isPhoneValid = formData.telefone.replace(/\D/g, "").length >= 10;
 
@@ -79,8 +100,18 @@ const isFormValid =
     e.preventDefault();
     setIsLoading(true);
 
+    if (!turnstileToken) {
+      toast({
+        variant: "destructive",
+        title: "Confirme a validação",
+        description: "Por favor, confirme que você não é um robô.",
+      });
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      const success = await sendToRDStation(formData);
+      const success = await sendToRDStation(formData, turnstileToken);
       if (success) {
         setFormSubmitted(true);
         setTimeout(() => {
@@ -288,6 +319,15 @@ const isFormValid =
                     />
                   </div>
                 </div>
+                
+                {/* CAPTCHA */}
+                <div
+                  className="cf-turnstile mt-4 flex justify-center"
+                  data-sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
+                  data-callback="onTurnstileSuccess"
+                  data-expired-callback="onTurnstileExpired"
+                  data-error-callback="onTurnstileError"
+                ></div>
 
                 {/* Submit */}
                 <button
@@ -382,7 +422,7 @@ const isFormValid =
                      Tire dúvidas sobre linhas, investimento e condições comerciais a qualquer hora pelo WhatsApp.
                    </p>
                    <a
-                     href="https://wa.me/553237290909?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20revender%20Veggi"
+                     href="https://wa.me/5532984107067?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20revender%20Veggi"
                      target="_blank"
                      rel="noopener noreferrer"
                      className="mt-auto block w-full text-center py-3 bg-[#25D366] text-white font-label font-semibold text-[14px] tracking-[0.05em] uppercase rounded-lg transition-all duration-300 hover:bg-[#1fb855]"

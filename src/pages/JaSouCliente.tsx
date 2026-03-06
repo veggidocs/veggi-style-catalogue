@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Store, TrendingUp, PackageCheck, Award, ShieldCheck, ChevronDown, CheckCircle, Loader2 } from "lucide-react";
@@ -32,12 +32,33 @@ const JaSouCliente = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [formData, setFormData] = useState({
     nome: "",
     telefone: "",
     email: "",
     cnpj: "",
   });
+
+  useEffect(() => {
+  (window as any).onTurnstileSuccess = (token: string) => {
+    setTurnstileToken(token);
+  };
+
+  (window as any).onTurnstileExpired = () => {
+    setTurnstileToken("");
+  };
+
+  (window as any).onTurnstileError = () => {
+    setTurnstileToken("");
+  };
+
+  return () => {
+    delete (window as any).onTurnstileSuccess;
+    delete (window as any).onTurnstileExpired;
+    delete (window as any).onTurnstileError;
+  };
+}, []);
 
 const isPhoneValid = formData.telefone.replace(/\D/g, "").length >= 10;
 const isCNPJValid = formData.cnpj.replace(/\D/g, "").length === 14;
@@ -63,8 +84,18 @@ const isFormValid =
     e.preventDefault();
     setIsLoading(true);
 
+    if (!turnstileToken) {
+      toast({
+        variant: "destructive",
+        title: "Confirme a validação",
+        description: "Por favor, confirme que você não é um robô.",
+      });
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      const success = await sendClienteToRDStation(formData);
+      const success = await sendClienteToRDStation(formData, turnstileToken);
       if (success) {
         setFormSubmitted(true);
         toast({
@@ -210,6 +241,15 @@ const isFormValid =
                     placeholder="00.000.000/0000-00"
                   />
                 </div>
+
+               {/* CAPTCHA */}
+                <div
+                  className="cf-turnstile mt-4 flex justify-center"
+                  data-sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
+                  data-callback="onTurnstileSuccess"
+                  data-expired-callback="onTurnstileExpired"
+                  data-error-callback="onTurnstileError"
+                ></div>
 
                 {/* Submit */}
                 <button

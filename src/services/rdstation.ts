@@ -8,7 +8,7 @@ interface RDStationFormData {
   tipoLoja: string;
   tipoRevenda: string;
   instagram: string;
-  possuiCnpj: string; // novo campo
+  possuiCnpj: string;
 }
 
 interface RDStationClienteFormData {
@@ -20,7 +20,7 @@ interface RDStationClienteFormData {
 
 const API_BASE = "https://api.grupoveggi.com.br";
 
-// 🔵 NOVO: captura UTMs da URL
+// 🔵 captura UTMs da URL
 function getUTMs() {
   const params = new URLSearchParams(window.location.search);
 
@@ -40,11 +40,9 @@ async function postWorker(path: string, body: any): Promise<boolean> {
     const response = await fetch(`${API_BASE}${path}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      // 🔵 adiciona UTMs sem alterar seu payload original
       body: JSON.stringify({ ...body, ...utms }),
     });
 
-    // opcional: ajudar debug
     if (!response.ok) {
       const text = await response.text().catch(() => "");
       console.error("Worker response error:", response.status, text);
@@ -58,9 +56,12 @@ async function postWorker(path: string, body: any): Promise<boolean> {
 }
 
 // FORM 1: Quero revender
-export const sendToRDStation = async (formData: RDStationFormData): Promise<boolean> => {
+export const sendToRDStation = async (
+  formData: RDStationFormData,
+  turnstileToken: string
+): Promise<boolean> => {
   return postWorker("/convert/quero-revender", {
-    name: formData.nome, 
+    name: formData.nome,
     email: formData.email,
     phone: formData.telefone,
     city: formData.cidade,
@@ -71,20 +72,29 @@ export const sendToRDStation = async (formData: RDStationFormData): Promise<bool
     cf_instagram_da_loja: formData.instagram,
     cf_possui_cnpj: formData.possuiCnpj,
 
+    // ✅ captcha
+    turnstileToken,
+
     traffic_source: document.referrer || "direto",
     created_at: new Date().toISOString(),
   });
 };
 
 // FORM 2: Já sou cliente
-export const sendClienteToRDStation = async (formData: RDStationClienteFormData): Promise<boolean> => {
+export const sendClienteToRDStation = async (
+  formData: RDStationClienteFormData,
+  turnstileToken: string
+): Promise<boolean> => {
   return postWorker("/convert/ja-sou-cliente", {
-    name: formData.nome,    
+    name: formData.nome,
     email: formData.email,
     phone: formData.telefone,
 
     // ✅ MAPEAMENTO RD (front -> RD)
     cf_cnpj: formData.cnpj,
+
+    // ✅ captcha
+    turnstileToken,
 
     traffic_source: document.referrer || "direto",
     created_at: new Date().toISOString(),
