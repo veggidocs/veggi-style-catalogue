@@ -20,27 +20,51 @@ interface RDStationClienteFormData {
 
 const API_BASE = "https://api.grupoveggi.com.br";
 
-// 🔵 captura UTMs da URL
-function getUTMs() {
+function saveTrackingParams() {
   const params = new URLSearchParams(window.location.search);
 
+  const keys = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "gclid",
+    "fbclid",
+    "ttclid",
+  ];
+
+  keys.forEach((key) => {
+    const value = params.get(key);
+    if (value) {
+      localStorage.setItem(key, value);
+    }
+  });
+}
+
+function getTrackingParams() {
+  saveTrackingParams();
+
   return {
-    utm_source: params.get("utm_source") || undefined,
-    utm_medium: params.get("utm_medium") || undefined,
-    utm_campaign: params.get("utm_campaign") || undefined,
-    utm_content: params.get("utm_content") || undefined,
-    utm_term: params.get("utm_term") || undefined,
+    utm_source: localStorage.getItem("utm_source") || undefined,
+    utm_medium: localStorage.getItem("utm_medium") || undefined,
+    utm_campaign: localStorage.getItem("utm_campaign") || undefined,
+    utm_content: localStorage.getItem("utm_content") || undefined,
+    utm_term: localStorage.getItem("utm_term") || undefined,
+    gclid: localStorage.getItem("gclid") || undefined,
+    fbclid: localStorage.getItem("fbclid") || undefined,
+    ttclid: localStorage.getItem("ttclid") || undefined,
   };
 }
 
 async function postWorker(path: string, body: any): Promise<boolean> {
   try {
-    const utms = getUTMs();
+    const tracking = getTrackingParams();
 
     const response = await fetch(`${API_BASE}${path}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...body, ...utms }),
+      body: JSON.stringify({ ...body, ...tracking }),
     });
 
     if (!response.ok) {
@@ -66,13 +90,11 @@ export const sendToRDStation = async (
     phone: formData.telefone,
     city: formData.cidade,
 
-    // ✅ MAPEAMENTO (front -> RD)
     cf_segmento_da_loja: formData.tipoLoja,
     cf_tipo_de_revenda_0: formData.tipoRevenda,
     cf_instagram_da_loja: formData.instagram,
     cf_possui_cnpj: formData.possuiCnpj,
 
-    // ✅ captcha
     turnstileToken,
 
     traffic_source: document.referrer || "direto",
@@ -90,10 +112,8 @@ export const sendClienteToRDStation = async (
     email: formData.email,
     phone: formData.telefone,
 
-    // ✅ MAPEAMENTO RD (front -> RD)
     cf_cnpj: formData.cnpj,
 
-    // ✅ captcha
     turnstileToken,
 
     traffic_source: document.referrer || "direto",

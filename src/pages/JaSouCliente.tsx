@@ -43,6 +43,12 @@ const JaSouCliente = () => {
   useEffect(() => {
   (window as any).onTurnstileSuccess = (token: string) => {
     setTurnstileToken(token);
+
+    // envia o formulário automaticamente após validar
+    const form = document.querySelector("form");
+    if (form) {
+      form.requestSubmit();
+    }
   };
 
   (window as any).onTurnstileExpired = () => {
@@ -81,18 +87,14 @@ const isFormValid =
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+  e.preventDefault();
 
-    if (!turnstileToken) {
-      toast({
-        variant: "destructive",
-        title: "Confirme a validação",
-        description: "Por favor, confirme que você não é um robô.",
-      });
-      setIsLoading(false);
-      return;
-    }
+  if (!turnstileToken) {
+    (window as any).turnstile.execute();
+    return;
+  }
+
+  setIsLoading(true);
 
     try {
       const success = await sendClienteToRDStation(formData, turnstileToken);
@@ -243,9 +245,11 @@ const isFormValid =
                 </div>
 
                {/* CAPTCHA */}
-                <div
-                  className="cf-turnstile mt-4 flex justify-center"
+               <div
+                  id="turnstile-widget"
+                  className="cf-turnstile"
                   data-sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
+                  data-size="invisible"
                   data-callback="onTurnstileSuccess"
                   data-expired-callback="onTurnstileExpired"
                   data-error-callback="onTurnstileError"
