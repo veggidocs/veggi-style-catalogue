@@ -39,11 +39,14 @@ const JaSouCliente = () => {
     cnpj: "",
   });
 
-  const isFormValid =
-    formData.nome.trim() !== "" &&
-    formData.telefone.trim() !== "" &&
-    formData.email.trim() !== "" &&
-    formData.cnpj.trim() !== "";
+const isPhoneValid = formData.telefone.replace(/\D/g, "").length >= 10;
+const isCNPJValid = formData.cnpj.replace(/\D/g, "").length === 14;
+
+const isFormValid =
+  formData.nome.trim() !== "" &&
+  isPhoneValid &&
+  formData.email.trim() !== "" &&
+  isCNPJValid;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -171,6 +174,7 @@ const JaSouCliente = () => {
                     type="tel"
                     name="telefone"
                     required
+                    minLength={14}
                     value={formData.telefone}
                     onChange={handleChange}
                     className={inputClass}
@@ -199,6 +203,7 @@ const JaSouCliente = () => {
                     type="text"
                     name="cnpj"
                     required
+                    minLength={18}
                     value={formData.cnpj}
                     onChange={handleChange}
                     className={inputClass}
