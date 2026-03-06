@@ -50,10 +50,7 @@ function getTrackingParams() {
     utm_medium: localStorage.getItem("utm_medium") || undefined,
     utm_campaign: localStorage.getItem("utm_campaign") || undefined,
     utm_content: localStorage.getItem("utm_content") || undefined,
-    utm_term: localStorage.getItem("utm_term") || undefined,
-    gclid: localStorage.getItem("gclid") || undefined,
-    fbclid: localStorage.getItem("fbclid") || undefined,
-    ttclid: localStorage.getItem("ttclid") || undefined,
+    utm_term: localStorage.getItem("utm_term") || undefined,  
   };
 }
 
